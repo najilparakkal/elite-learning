@@ -1,10 +1,7 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 const FuzzyOverlayExample = () => {
   return (
-    // NOTE: An overflow of hidden will be required on a wrapping
-    // element to see expected results
     <div className="relative overflow-hidden">
       <ExampleContent />
       <FuzzyOverlay />
@@ -25,12 +22,8 @@ const FuzzyOverlay = () => {
         ease: "linear",
         repeatType: "mirror",
       }}
-      // You can download these PNGs here:
-      // https://www.hover.dev/black-noise.png
-      // https://www.hover.dev/noise.png
       style={{
-        backgroundImage: 'url("src/black-noise.png")',
-        // backgroundImage: 'url("/noise.png")',
+        backgroundImage: 'url("/black-noise.png")', // ✅ points to public folder
       }}
       className="pointer-events-none absolute -inset-[100%] opacity-[15%]"
     />
@@ -46,8 +39,6 @@ const ExampleContent = () => {
       <p className="text-center text-neutral-400">
         visit us again soon to see our progress!
       </p>
-      {/* <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} /> */}
-
     </div>
   );
 };
