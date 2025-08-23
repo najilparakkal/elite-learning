@@ -23,7 +23,7 @@ const FuzzyOverlay = () => {
         repeatType: "mirror",
       }}
       style={{
-        backgroundImage: 'url("/black-noise.png")', // ✅ points to public folder
+        backgroundImage: 'url("/black-noise.png")', // ✅ from public folder
       }}
       className="pointer-events-none absolute -inset-[100%] opacity-[15%]"
     />
@@ -32,11 +32,14 @@ const FuzzyOverlay = () => {
 
 const ExampleContent = () => {
   return (
-    <div className="relative grid h-screen place-content-center space-y-6 bg-neutral-950 p-8">
-      <p className="text-center flex flex-col uppercase   justify-center text-6xl font-black text-neutral-50">
-        <span className=" text-3xl " >site under </span> construction ⚠️
+    <div className="relative grid h-screen place-content-center space-y-6 bg-neutral-950 p-6 sm:p-8">
+      <p className="text-center flex flex-col items-center uppercase font-black text-neutral-50">
+        <span className="text-xl sm:text-2xl md:text-3xl">site under</span>
+        <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+          construction ⚠️
+        </span>
       </p>
-      <p className="text-center text-neutral-400">
+      <p className="text-center text-sm sm:text-base md:text-lg text-neutral-400 max-w-md mx-auto px-4">
         visit us again soon to see our progress!
       </p>
     </div>
