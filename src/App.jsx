@@ -33,8 +33,8 @@ const FuzzyOverlay = () => {
 const ExampleContent = () => {
   return (
     <div className="relative grid h-screen place-content-center space-y-6 bg-neutral-950 p-8">
-      <p className="text-center uppercase text-6xl font-black text-neutral-50">
-        site under construction ❗
+      <p className="text-center flex flex-col uppercase   justify-center text-6xl font-black text-neutral-50">
+        <span className=" text-3xl " >site under </span> construction ⚠️
       </p>
       <p className="text-center text-neutral-400">
         visit us again soon to see our progress!
