@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa6";
 
 const Team = () => {
@@ -41,12 +42,38 @@ const Team = () => {
     },
   ];
 
+  const [slidesToShow, setSlidesToShow] = useState(4);
+
+  useEffect(() => {
+    const updateSlides = () => {
+      const width = window.innerWidth;
+      if (width <= 480) {
+        setSlidesToShow(1);
+      } else if (width <= 640) {
+        setSlidesToShow(2);
+      } else if (width <= 768) {
+        setSlidesToShow(3);
+      } else if (width <= 1024) {
+        setSlidesToShow(4);
+      } else {
+        setSlidesToShow(4);
+      }
+    };
+
+    updateSlides(); // run on mount
+    window.addEventListener("resize", updateSlides);
+
+    return () => {
+      window.removeEventListener("resize", updateSlides);
+    };
+  }, []);
+
   // Slider settings
   const sliderSettings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: slidesToShow,
     slidesToScroll: 1,
     arrows: false,
     autoplay: false,
@@ -56,23 +83,23 @@ const Team = () => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-        }
+        },
       },
       {
         breakpoint: 768, // Small tablet
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-        }
+        },
       },
       {
         breakpoint: 480, // Mobile
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
 
   return (
@@ -90,9 +117,9 @@ const Team = () => {
           </div>
 
           <div className="lg:w-1/2 md:mt-4 flex ">
-          <div className="md:w-1/3"></div>
+            <div className="md:w-1/3"></div>
             <p className="text-gray-600 text-sm sm:text-base md:w-2/3 items-end  leading-relaxed">
-               <span className="font-semibold text-gray-900">Our team</span> is
+              <span className="font-semibold text-gray-900">Our team</span> is
               made up of passionate educators, innovators, and industry experts
               who bring years of experience and dedication to make learning
               engaging and impactful.
@@ -104,7 +131,10 @@ const Team = () => {
         <div className="relative mb-8 ">
           <Slider ref={setSliderRef} {...sliderSettings}>
             {teamMembers.map((member, index) => (
-              <div key={index} className="px-2 sm:px-3 md:pb-10 pb-6 focus:outline-none">
+              <div
+                key={index}
+                className="px-2 sm:px-3 md:pb-10 pb-6 focus:outline-none"
+              >
                 <div className="text-start border p-3 sm:p-4 rounded-xl border-gray-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
                   {/* Profile Image */}
                   <div className="relative mb-3">
@@ -121,7 +151,9 @@ const Team = () => {
                   <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-1">
                     {member.name}
                   </h4>
-                  <p className="text-sm sm:text-base text-gray-600 mb-3">{member.position}</p>
+                  <p className="text-sm sm:text-base text-gray-600 mb-3">
+                    {member.position}
+                  </p>
 
                   {/* Social Icons */}
                   <div className="flex justify-start space-x-2">
