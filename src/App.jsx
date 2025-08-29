@@ -1,49 +1,8 @@
-import { motion } from "framer-motion";
+import React from "react";
+import Approuter from "./routers/Approuter";
 
-const FuzzyOverlayExample = () => {
-  return (
-    <div className="relative overflow-hidden">
-      <ExampleContent />
-      <FuzzyOverlay />
-    </div>
-  );
+const App = () => {
+  return <Approuter />;
 };
 
-const FuzzyOverlay = () => {
-  return (
-    <motion.div
-      initial={{ transform: "translateX(-10%) translateY(-10%)" }}
-      animate={{
-        transform: "translateX(10%) translateY(10%)",
-      }}
-      transition={{
-        repeat: Infinity,
-        duration: 0.2,
-        ease: "linear",
-        repeatType: "mirror",
-      }}
-      style={{
-        backgroundImage: 'url("/black-noise.png")', // ✅ from public folder
-      }}
-      className="pointer-events-none absolute -inset-[100%] opacity-[15%]"
-    />
-  );
-};
-
-const ExampleContent = () => {
-  return (
-    <div className="relative grid h-screen place-content-center space-y-6 bg-neutral-950 p-6 sm:p-8">
-      <p className="text-center flex flex-col items-center uppercase font-black text-neutral-50">
-        <span className="text-xl sm:text-2xl md:text-3xl">site under</span>
-        <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-          construction ⚠️
-        </span>
-      </p>
-      <p className="text-center text-sm sm:text-base md:text-lg text-neutral-400 max-w-md mx-auto px-4">
-        visit us again soon to see our progress!
-      </p>
-    </div>
-  );
-};
-
-export default FuzzyOverlayExample;
+export default App;
