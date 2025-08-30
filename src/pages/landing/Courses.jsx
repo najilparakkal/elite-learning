@@ -58,7 +58,7 @@ const Courses = () => {
 
   return (
     <div className="py-12 md:py-20  bg-gray-50">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full mx-auto">
         {/* Header Section */}
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
@@ -73,46 +73,36 @@ const Courses = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-12 md:mb-16">
           {courseCards.map((course, index) => (
             <div
-              key={index}
-              className="bg-white p-3 sm:p-2.5 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-            >
-              {/* Card Header with Gradient */}
-              <div className="relative md:rounded-2xl rounded-lg h-36 sm:h-36 md:h-40 flex items-center justify-center">
-                {/* <div className="absolute rounded-2xl inset-0 bg-gradient-to-r from-blue-600 via-blue-700 to-red-500 opacity-90"></div> */}
-                {/* <div className="relative z-10 text-center px-2">
-                  <div className="text-white text-xl sm:text-2xl md:text-3xl font-bold mb-1">
-                    {course.subtitle}
-                  </div>
-                  <div className="text-white text-xs sm:text-sm font-medium">
-                    {course.tagline}
-                  </div>
-                </div> */}
-                <img
-                  src="/banners/Artboard-5[1].webp"
-                  alt="Banner"
-                  className="w-full h-full object-center rounded-xl"
-                />
-                {/* Placeholder figures */}
-                {/* <div className="absolute right-2 bottom-2 sm:right-4 sm:bottom-4 flex space-x-1 sm:space-x-2">
-                  <div className="w-8 h-10 sm:w-10 sm:h-12 md:w-12 md:h-16 bg-white/20 rounded-lg"></div>
-                  <div className="w-8 h-10 sm:w-10 sm:h-12 md:w-12 md:h-16 bg-white/20 rounded-lg"></div>
-                  <div className="w-8 h-10 sm:w-10 sm:h-12 md:w-12 md:h-16 bg-white/20 rounded-lg"></div>
-                </div> */}
-              </div>
+  key={index}
+  className="bg-white p-3 sm:p-2.5 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
+>
+  {/* Card Header with Gradient */}
+  <div className="relative md:rounded-2xl rounded-lg h-36 sm:h-36 md:h-auto flex items-center justify-center">
+    <img
+      src="/banners/Artboard-5[1].webp"
+      alt="Banner"
+      className="w-full h-full object-center rounded-xl"
+    />
+  </div>
 
-              {/* Card Content */}
-              <div className="pt-4 sm:pt-5 md:pt-6 pb-1 sm:pb-2">
-                <h3 className="text-sm sm:text-base border w-fit px-2 py-2 sm:py-2 rounded-md border-[#115ACE] font-bold text-[#115ACE] mb-2 sm:mb-3">
-                  {course.title}
-                </h3>
-                <p className="text-gray-900 font-semibold mb-4 sm:mb-6 text-xs sm:text-sm leading-relaxed">
-                  {course.description}
-                </p>
-                <button className="w-full text-xs sm:text-sm bg-[#001333] text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg font-medium hover:bg-slate-700 transition-colors duration-200">
-                  {course.button}
-                </button>
-              </div>
-            </div>
+  {/* Card Content */}
+  <div className="flex flex-col flex-1 pt-4 sm:pt-5 md:pt-6">
+    <h3 className="text-sm sm:text-base border w-fit px-2 py-2 sm:py-2 rounded-md border-[#115ACE] font-bold text-[#115ACE] mb-2 sm:mb-3">
+      {course.title}
+    </h3>
+
+    {/* description grows */}
+    <p className="text-gray-900 font-semibold mb-4 sm:mb-6 text-xs sm:text-sm leading-relaxed flex-grow">
+      {course.description}
+    </p>
+
+    {/* button stays bottom */}
+    <button className="mt-auto w-full text-xs sm:text-sm bg-[#001333] text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg font-medium hover:bg-slate-700 transition-colors duration-200">
+      {course.button}
+    </button>
+  </div>
+</div>
+
           ))}
         </div>
 

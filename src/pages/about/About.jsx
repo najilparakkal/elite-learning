@@ -7,7 +7,7 @@ const About = () => {
     <div className="min-h-screen bg-gray-50 sora">
       <Header />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 lg:py-20">
+      <div className="px-4 md:px-12 lg:px-16 py-10 md:py-16 lg:py-20">
         {/* First Section */}
         <div className="grid md:grid-cols-2 md:gap-12 gap-8 justify-center pt-20 items-center mb-16">
           <div className="md:hidden flex items-center justify-center h-full rounded-2xl ">

@@ -16,9 +16,9 @@ const Courses = () => {
     <div className="min-h-screen sora bg-white">
       <Header />
 
-      <div className="w-full px-4 md:px-8 lg:px-16 pt-20 md:pt-16  lg:pt-24 py-5 md:py-16 lg:py-24">
+      <div className="w-full md:px-12 lg:px-16 px-4 pt-20 md:pt-16  lg:pt-24 py-5 md:py-16 lg:py-24">
         {/* Course Header */}
-        <div className="px-2 md:px-4 mt-6 md:mt-10 py-6 md:py-10 mb-4 md:mb-6">
+        <div className=" mt-6 md:mt-10 py-6 md:py-10 mb-4 md:mb-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 md:mb-8 gap-4">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-bold text-gray-800">
               CPA (USA) – Course Details
@@ -50,7 +50,7 @@ const Courses = () => {
             Key Details
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 px-2 md:px-4 lg:px-10 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2  gap-6 md:gap-8">
             {/* Left Column */}
             <div className="space-y-6 md:space-y-8 w-full md:w-[90%] lg:w-[80%]">
               {/* Eligibility */}

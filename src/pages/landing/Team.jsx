@@ -104,7 +104,7 @@ const Team = () => {
 
   return (
     <section id="team" className="py-12 ">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full mx-auto">
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start mb-8 md:mb-12">
           <div className="lg:w-1/2 mb-6 lg:mb-0">

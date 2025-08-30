@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { BiMenu, BiX } from "react-icons/bi";
 import { BsArrowRight, BsArrowUpRight } from "react-icons/bs";
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -9,8 +10,22 @@ import { useNavigate, useLocation } from "react-router-dom";
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const headerRef = useRef(null);
+
+  // Handle scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      setHasScrolled(scrollTop > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -103,140 +118,330 @@ const Header = () => {
     }
   };
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: -20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10,
+      },
+    },
+  };
+
+  const mobileMenuVariants = {
+    closed: {
+      x: "100%",
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 40,
+      },
+    },
+    open: {
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 40,
+      },
+    },
+  };
+
+  // ✅ detect if mobile
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth < 768); // md breakpoint
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
   return (
     <>
-      <header className="w-full md:px-16 px-4 py-4 fixed top-0 left-0 z-50">
-        <div className="max-w-7xl mx-auto">
-          <nav
-            className={`bg-gradient-to-r from-[#001333] to-[#0e4fb5] rounded-2xl px-6 md:py-4 py-3 flex items-center justify-between relative transform transition-all duration-700 ease-out  ${
+      <motion.header
+        ref={headerRef}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ type: "spring", stiffness: 100, damping: 15 }}
+        className="w-full fixed top-0 left-0 z-50 mt-6"
+      >
+        <motion.div
+          animate={{
+            paddingLeft: isMobile
+              ? hasScrolled
+                ? "1.5rem"
+                : "0.1rem"
+              : hasScrolled
+              ? "2.8rem"
+              : "1rem",
+            paddingRight: isMobile
+              ? hasScrolled
+                ? "1.0rem"
+                : "0.1rem"
+              : hasScrolled
+              ? "2.8rem"
+              : "1rem",
+          }}
+          transition={{ type: "spring", stiffness: 100, damping: 15 }}
+          className="w-full mx-auto"
+        >
+          <motion.nav
+            layout
+            initial={{ borderRadius: 16 }}
+            animate={{
+              borderRadius: 16,
+              padding: "1rem 1.5rem",
+            }}
+            transition={{ type: "spring", stiffness: 100, damping: 15 }}
+            className={`bg-gradient-to-r  from-[#001333] to-[#0e4fb5] flex items-center justify-between relative ${
               isMobileMenuOpen
                 ? "md:opacity-100 opacity-0 pointer-events-none md:pointer-events-auto"
                 : "opacity-100"
-            } transition-opacity duration-500`}
+            }`}
           >
             {/* Logo */}
-            <div className="flex items-center">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center"
+            >
               <div className="text-white font-bold text-xl cursor-pointer">
-                <img
+                <motion.img
                   onClick={() => navigate("/")}
+                  whileHover={{ rotate: 5 }}
                   src="/WhatsApp_Image_2025-08-23_at_15.34.15_9ac235af-removebg-preview.png"
                   alt=""
-                  className="md:w-auto  md:h-6 h-5"
+                  className="md:w-auto md:h-6 h-5"
                 />
               </div>
-            </div>
+            </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="hidden md:flex items-center space-x-8"
+            >
               {navItems.map((item) => (
-                <a
+                <motion.a
                   key={item.name}
+                  variants={itemVariants}
                   href={item.href}
                   onClick={(e) => handleNavigation(e, item)}
-                  className="text-white hover:text-blue-200 transition-colors md:text-sm text-xs duration-200 font-sans cursor-pointer"
+                  whileHover={{
+                    y: -2,
+                    color: "#93c5fd",
+                  }}
+                  whileTap={{ y: 0 }}
+                  className="text-white transition-colors md:text-sm text-xs duration-200 font-sans cursor-pointer relative"
                 >
                   {item.name}
-                </a>
+                  <motion.span
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-200"
+                    whileHover={{ width: "100%" }}
+                    transition={{ duration: 0.2 }}
+                  />
+                </motion.a>
               ))}
-            </div>
+            </motion.div>
 
             {/* Desktop Contact Button */}
-            <div className="hidden md:flex justify-center items-center gap-0.5">
-              <div className="flex bg-white rounded-full py-2 text-xs px-2 justify-center items-center">
-                <FaArrowRightLong className="text-[#0e4fb5]" />
-              </div>
-
-              <button
-                onClick={handleContactClick}
-                className="text-xs text-white bg-[#001333] rounded-2xl px-2 py-2 font-medium flex items-center gap-2 transition-all duration-200 cursor-pointer"
+            <motion.div
+              whileHover="hover"
+              initial="rest"
+              className="hidden md:flex justify-center items-center gap-0.5 group relative"
+            >
+              <motion.div
+                variants={{
+                  rest: { width: 135 },
+                  hover: { width: 145 },
+                }}
+                className="flex items-center relative h-[40px]"
               >
-                Contact Us
-              </button>
-            </div>
+                <div className="flex items-center relative w-[135px] h-[40px]">
+                  {/* Arrow that moves to right and rotates on hover */}
+                  <div className="absolute left-0 top-1/2 transform -translate-y-1/2 transition-all duration-500 ease-in-out group-hover:left-full group-hover:-translate-x-full group-hover:rotate-360 z-0">
+                    <div className="flex bg-white rounded-full w-8 h-8 justify-center items-center shadow-md">
+                      <FaArrowRightLong className="text-[#0e4fb5] text-xs" />
+                    </div>
+                  </div>
+
+                  {/* Button that moves to left on hover */}
+                  <button
+                    onClick={handleContactClick}
+                    className="text-xs text-white bg-[#001333] rounded-2xl px-4 py-2 font-medium flex items-center gap-2 transition-all duration-500 ease-in-out absolute right-0 top-1/2 transform -translate-y-1/2 group-hover:right-full group-hover:translate-x-full z-10 cursor-pointer whitespace-nowrap"
+                  >
+                    Contact Us
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
 
             {/* Mobile Hamburger Button */}
-            <button
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
               onClick={toggleMobileMenu}
               className="md:hidden text-white p-2 hover:bg-blue-700 rounded-lg transition-colors duration-200"
               aria-label="Toggle mobile menu"
             >
-              {isMobileMenuOpen ? (
-                <BiX className="w-6 h-6" />
-              ) : (
-                <BiMenu className="w-6 h-6" />
-              )}
-            </button>
-          </nav>
-        </div>
-      </header>
+              <AnimatePresence mode="wait">
+                {isMobileMenuOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <BiX className="w-6 h-6" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <BiMenu className="w-6 h-6" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          </motion.nav>
+        </motion.div>
+      </motion.header>
 
       {/* Mobile Menu Overlay */}
-      <div
-        className={`fixed inset-0 bg-white bg-opacity-50 z-40 transition-opacity duration-500 md:hidden ${
-          isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-        onClick={toggleMobileMenu}
-      />
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+            onClick={toggleMobileMenu}
+          />
+        )}
+      </AnimatePresence>
 
       {/* Mobile Menu Sidebar */}
-      <div
-        className={`fixed top-0 right-0 h-full w-80 bg-gradient-to-b from-[#001333] to-[#0e4fb5] z-50 flex flex-col md:hidden transition-transform duration-500 ease-in-out ${
-          isMobileMenuOpen
-            ? "translate-x-0 opacity-100"
-            : "translate-x-full opacity-0"
-        }`}
-      >
-        <div className="p-6 flex-grow overflow-y-auto">
-          {/* Mobile Menu Header */}
-          <div className="flex items-center justify-between mb-8">
-            <div className="text-white font-bold text-xl p-2 cursor-pointer">
-              <img
-                onClick={() => {
-                  navigate("/");
-                  setIsMobileMenuOpen(false);
-                }}
-                src="/WhatsApp_Image_2025-08-23_at_15.34.15_9ac235af-removebg-preview.png"
-                alt=""
-                className="w-auto h-6"
-              />{" "}
-            </div>
-            <button
-              onClick={toggleMobileMenu}
-              className="text-white p-2 hover:bg-blue-700 rounded-lg transition-colors duration-200"
-              aria-label="Close mobile menu"
-            >
-              <BiX className="w-6 h-6" />
-            </button>
-          </div>
-
-          {/* Mobile Navigation Items */}
-          <nav className="space-y-4">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => handleNavigation(e, item)}
-                className="block text-white hover:text-blue-200 transition-colors duration-200 font-medium py-3 px-4 rounded-lg hover:bg-blue-700 cursor-pointer"
-              >
-                {item.name}
-              </a>
-            ))}
-          </nav>
-        </div>
-
-        {/* Mobile Contact Button - Fixed at bottom */}
-        <div className="p-6 border-t flex border-blue-400/30 mt-auto gap-1">
-          <div className="flex bg-white rounded-full px-4 py-3 text-sm justify-center items-center">
-            <FaArrowRightLong className="text-[#0e4fb5]" />
-          </div>
-          <button
-            onClick={handleContactClick}
-            className="w-full text-white bg-[#001333] rounded-full px-6 py-3 font-medium flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer"
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            variants={mobileMenuVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            className="fixed top-0 right-0 h-full w-80 bg-gradient-to-b from-[#001333] to-[#0e4fb5] z-50 flex flex-col md:hidden"
           >
-            Contact Us
-          </button>
-        </div>
-      </div>
+            <div className="p-6 flex-grow overflow-y-auto">
+              {/* Mobile Menu Header */}
+              <div className="flex items-center justify-between mb-8">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="text-white font-bold text-xl p-2 cursor-pointer"
+                >
+                  <img
+                    onClick={() => {
+                      navigate("/");
+                      setIsMobileMenuOpen(false);
+                    }}
+                    src="/WhatsApp_Image_2025-08-23_at_15.34.15_9ac235af-removebg-preview.png"
+                    alt=""
+                    className="w-auto h-6"
+                  />
+                </motion.div>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={toggleMobileMenu}
+                  className="text-white p-2 hover:bg-blue-700 rounded-lg transition-colors duration-200"
+                  aria-label="Close mobile menu"
+                >
+                  <BiX className="w-6 h-6" />
+                </motion.button>
+              </div>
+
+              {/* Mobile Navigation Items */}
+              <motion.nav
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                className="space-y-4"
+              >
+                {navItems.map((item) => (
+                  <motion.a
+                    key={item.name}
+                    variants={itemVariants}
+                    href={item.href}
+                    onClick={(e) => handleNavigation(e, item)}
+                    whileHover={{ x: 5 }}
+                    className="block text-white hover:text-blue-200 transition-colors duration-200 font-medium py-3 px-4 rounded-lg hover:bg-blue-700 cursor-pointer"
+                  >
+                    {item.name}
+                  </motion.a>
+                ))}
+              </motion.nav>
+            </div>
+
+            {/* Mobile Contact Button - Fixed at bottom */}
+            <div className="p-6 border-t flex border-blue-400/30 mt-auto gap-1">
+              <motion.div
+                whileHover="hover"
+                initial="rest"
+                className="flex items-center relative w-[135px] h-[40px]"
+              >
+                {/* Arrow that moves to right and rotates on hover */}
+                <motion.div
+                  variants={{
+                    rest: { left: 0, rotate: 0 },
+                    hover: { left: "100%", x: "-100%", rotate: 360 },
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  className="absolute top-1/2 transform -translate-y-1/2 z-0"
+                >
+                  <div className="flex bg-white rounded-full w-8 h-8 justify-center items-center shadow-md">
+                    <FaArrowRightLong className="text-[#0e4fb5] text-xs" />
+                  </div>
+                </motion.div>
+
+                {/* Button that moves to left on hover */}
+                <motion.button
+                  variants={{
+                    rest: { right: 0, x: 0 },
+                    hover: { right: "100%", x: "100%" },
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  onClick={handleContactClick}
+                  className="text-xs text-white bg-[#001333] rounded-2xl px-4 py-2 font-medium flex items-center gap-2 absolute top-1/2 transform -translate-y-1/2 z-10 cursor-pointer whitespace-nowrap"
+                >
+                  Contact Us
+                </motion.button>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
