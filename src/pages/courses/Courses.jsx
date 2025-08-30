@@ -16,7 +16,7 @@ const Courses = () => {
     <div className="min-h-screen sora bg-white">
       <Header />
 
-      <div className="w-full md:px-12 lg:px-16 px-4 pt-20 md:pt-16  lg:pt-24 py-5 md:py-16 lg:py-24">
+      <div className="w-full max-w-7xl mx-auto md:px-12 lg:px-16 px-4 pt-20 md:pt-16  lg:pt-24 py-5 md:py-16 lg:py-24">
         {/* Course Header */}
         <div className=" mt-6 md:mt-10 py-6 md:py-10 mb-4 md:mb-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 md:mb-8 gap-4">

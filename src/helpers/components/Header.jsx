@@ -188,18 +188,18 @@ const Header = () => {
                 ? "1.5rem"
                 : "0.1rem"
               : hasScrolled
-              ? "2.8rem"
-              : "1rem",
+              ? "8rem"
+              : "2.8rem",
             paddingRight: isMobile
               ? hasScrolled
                 ? "1.0rem"
                 : "0.1rem"
               : hasScrolled
-              ? "2.8rem"
-              : "1rem",
+              ? "8rem"
+              : "2.8rem",
           }}
           transition={{ type: "spring", stiffness: 100, damping: 15 }}
-          className="w-full mx-auto"
+          className="w-full max-w-7xl mx-auto"
         >
           <motion.nav
             layout
@@ -266,7 +266,7 @@ const Header = () => {
             <motion.div
               whileHover="hover"
               initial="rest"
-              className="hidden md:flex justify-center items-center gap-0.5 group relative"
+              className="hidden md:flex  w-[132px]  justify-center items-center gap-0.5 group relative"
             >
               <motion.div
                 variants={{
@@ -275,9 +275,9 @@ const Header = () => {
                 }}
                 className="flex items-center relative h-[40px]"
               >
-                <div className="flex items-center relative w-[135px] h-[40px]">
+                <div className="flex items-center relative w-[132px] h-[40px]">
                   {/* Arrow that moves to right and rotates on hover */}
-                  <div className="absolute left-0 top-1/2 transform -translate-y-1/2 transition-all duration-500 ease-in-out group-hover:left-full group-hover:-translate-x-full group-hover:rotate-360 z-0">
+                  <div className="absolute left-0 top-1/2 transform -translate-y-1/2 transition-all duration-600 ease-in-out group-hover:left-full group-hover:-translate-x-full group-hover:rotate-360 z-0">
                     <div className="flex bg-white rounded-full w-8 h-8 justify-center items-center shadow-md">
                       <FaArrowRightLong className="text-[#0e4fb5] text-xs" />
                     </div>

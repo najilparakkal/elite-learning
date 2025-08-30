@@ -44,18 +44,18 @@ const REVIEWS = [
 
 export default function ReviewsPage() {
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50 sora">
 
         <Header />
       {/* Gradient header bar */}
-      <header className="h-32 mt-28 w-full bg-gradient-to-r from-[#001333] to-[#0e4fb5] flex items-center justify-center">
+      <header className="h-32  mt-28 w-full bg-gradient-to-r from-[#001333] to-[#0e4fb5] flex items-center justify-center">
         <h1 className="text-3xl md:text-[40px] font-bold text-white text-balance">
           Reviews
         </h1>
       </header>
 
       {/* Grid of review cards */}
-      <section className="mx-auto md:px-16 px-4  py-10">
+      <section className=" max-w-7xl mx-auto md:px-16 px-4  py-10">
         <div className="py-10 md:py-12">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2  lg:grid-cols-3 md:gap-10 ">
             {REVIEWS.map((review) => (

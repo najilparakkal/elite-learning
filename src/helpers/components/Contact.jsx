@@ -46,7 +46,7 @@ const Contact = () => {
   };
 
   return (
-    <div  className="h-auto md:px-8 lg:px-16 px-4 pb-8 md:pb-10 pt-12 md:pt-20 w-full rounded-t-2xl bg-gradient-to-b from-[#0e4fb5] to-[#000c20]">
+    <div className="h-auto  lg:px-16 px-4 pb-8 md:pb-10 pt-12 md:pt-20 w-full rounded-t-2xl bg-gradient-to-b from-[#0e4fb5] to-[#000c20]">
       <div className="flex w-full flex-col md:flex-row">
         <div className="w-full md:w-1/2 px-2 sm:px-4 md:px-8 lg:px-12 xl:px-20">
           <img
@@ -55,7 +55,7 @@ const Contact = () => {
             className="h-auto w-full object-center max-w-md mx-auto md:max-w-full"
           />
         </div>
-        <div  className="w-full md:w-1/2 flex flex-col space-y-3 md:space-y-4 justify-center items-center md:items-start mt-6 md:mt-0 px-2 sm:px-4">
+        <div className="w-full md:w-1/2 flex flex-col space-y-3 md:space-y-4 justify-center items-center md:items-start mt-6 md:mt-0 px-2 sm:px-4">
           <h6 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white text-center md:text-left">
             Just on Build Your Dream.
           </h6>
@@ -64,13 +64,16 @@ const Contact = () => {
             you with the right guidance, skills, and support to turn your vision
             into reality.
           </p>
-          <button  className="text-xs sm:text-sm w-fit text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-md bg-[#001333]">
+          <button className="text-xs sm:text-sm w-fit text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-md bg-[#001333]">
             About Us
           </button>
         </div>
       </div>
 
-      <div  id="contact" className="w-full rounded-2xl px-2 sm:px-4 md:px-8 lg:px-16 bg-[#f6f6f6] h-full flex flex-col md:flex-row mt-10 md:mt-16">
+      <div
+        id="contact"
+        className="w-full rounded-2xl px-2 sm:px-4 md:px-8 lg:px-16 max-w-7xl mx-auto bg-[#f6f6f6] h-full flex flex-col md:flex-row mt-10 md:mt-16"
+      >
         <div className="w-full md:w-1/2 p-2 sm:p-4 md:py-6 lg:py-8 xl:pt-10 xl:pb-5 flex flex-col justify-evenly">
           <div className="flex flex-col justify-between space-y-4 md:space-y-6 p-2 sm:p-4 h-full rounded-lg">
             {/* First Block */}
@@ -97,8 +100,8 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="w-full md:w-1/2 py-6 md:py-8 lg:py-10">
-          <div className="p-3 sm:p-4 md:p-6 lg:p-8 xl:px-12 xl:pt-10 xl:pb-5 bg-white rounded-lg shadow-md">
+        <div className="w-full md:w-1/2 py-6 md:py-8 lg:py-10  ">
+          <div className="p-3 sm:p-4 md:p-6 lg:p-8 xl:px-12 xl:pt-10 xl:pb-5  bg-white rounded-lg shadow-md">
             <Formik
               initialValues={contactInitialValues}
               validationSchema={contactValidationSchema}
@@ -375,7 +378,7 @@ const Contact = () => {
       </div>
       <div className="w-full flex justify-center items-center py-6 sm:py-8 md:py-10 ">
         <div
-          className="w-full max-w-5xl flex flex-col justify-center items-center py-6 rounded-xl md:rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 text-center bg-cover bg-center"
+          className="w-full max-w-7xl mx-auto flex flex-col justify-center items-center py-6 rounded-xl md:rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 text-center bg-cover bg-bottom bg-no-repeat"
           style={{ backgroundImage: "url('/banners/Rectangle 39.png')" }}
         >
           <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-white mb-2">

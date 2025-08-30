@@ -77,7 +77,7 @@ const Courses = () => {
   className="bg-white p-3 sm:p-2.5 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
 >
   {/* Card Header with Gradient */}
-  <div className="relative md:rounded-2xl rounded-lg h-36 sm:h-36 md:h-auto flex items-center justify-center">
+  <div className="relative md:rounded-2xl rounded-lg h-40 sm:h-36 md:h-auto flex items-center justify-center">
     <img
       src="/banners/Artboard-5[1].webp"
       alt="Banner"

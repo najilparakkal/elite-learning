@@ -43,7 +43,7 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50 sora">
       <Header />
 
-      <main className="relative overflow-hidden px-4 md:px-12 lg:px-16 py-10">
+      <main className="relative overflow-hidden px-4 md:px-8 lg:px-12 py-10 max-w-7xl mx-auto">
         {/* Hero Section */}
         <section className="py-10 md:py-16 lg:py-24">
           <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -77,7 +77,7 @@ export default function Home() {
               </button>
 
               {/* Features */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 pt-6 md:pt-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-6 md:pt-8">
                 {[
                   "Flexible Learning",
                   "Structured Path",
@@ -98,15 +98,17 @@ export default function Home() {
             </div>
 
             {/* Right Content - Hero Image */}
-            <div className="relative mt-6 flex justify-center lg:justify-end w-full">
-              <div
-                className="h-64 md:h-[400px] w-full lg:w-[500px] bg-center bg-contain bg-no-repeat relative"
-                style={{
-                  backgroundImage: "url('/banners/Back Drop Graphics[2].png')",
-                }}
-              >
+            <div className="relative mt-6  flex justify-center lg:justify-end w-full">
+              {/* Image container */}
+              <div className="h-64 md:h-[400px] flex md:justify-end justify-center  w-full relative">
+                <img
+                  src="/banners/Back Drop Graphics[2].png"
+                  alt="Backdrop"
+                  className="h-full w-auto object-fill flex justify-end "
+                />
+
                 {/* Floating Badge */}
-                <div className="absolute top-16 md:top-28 -left-2 md:left-6 bg-white rounded-lg px-3 md:px-4 w-28 md:w-32 py-1.5 shadow-lg">
+                <div className="absolute top-16 md:top-28 left-0 md:left-16 bg-white rounded-lg px-3 md:px-4 w-28 md:w-32 py-1.5 shadow-lg">
                   <div className="flex items-center gap-1 md:gap-2">
                     <img
                       src="/icons/Top[1].png"
@@ -127,7 +129,7 @@ export default function Home() {
         </section>
 
         {/* Bottom Section with Slider */}
-        <section className="flex flex-col md:flex-row items-center md:items-start mt-12 md:mt-16 md:h-20 gap-6 md:gap-0">
+        <section className="flex flex-col md:flex-row items-center  md:items-start mt-12 md:mt-16 md:h-20 gap-6 md:gap-0">
           {/* Left Text */}
           <div className="w-full md:w-1/3 flex flex-col justify-center text-center md:text-left">
             <p className="text-sm md:text-base text-[#115ACE]">
@@ -137,14 +139,14 @@ export default function Home() {
           </div>
 
           {/* Slider Section */}
-          <div className="w-full md:w-2/3 flex flex-col md:flex-row items-center gap-4 md:gap-6">
+          <div className="w-full md:w-2/3 flex flex-col md:flex-row md:text-start text-center items-center gap-4 md:gap-6">
             <Slider
               ref={(slider) => (sliderRef = slider)}
               {...sliderSettings}
               className="w-full md:w-[80%]"
             >
               {slides.map((slide, idx) => (
-                <div key={idx} className="px-2">
+                <div key={idx} className="">
                   <p className="text-sm md:text-base text-gray-600">
                     {slide.text}
                   </p>
