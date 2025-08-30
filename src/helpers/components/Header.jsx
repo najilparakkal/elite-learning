@@ -179,21 +179,21 @@ const Header = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 100, damping: 15 }}
-        className="w-full fixed top-0 left-0 z-50 mt-6"
+        className="w-full fixed top-0 left-0 z-50 md:mt-6 mt-4"
       >
         <motion.div
           animate={{
             paddingLeft: isMobile
               ? hasScrolled
-                ? "1.5rem"
-                : "0.1rem"
+                ? "2rem"
+                : "1rem"
               : hasScrolled
               ? "8rem"
               : "2.8rem",
             paddingRight: isMobile
               ? hasScrolled
-                ? "1.0rem"
-                : "0.1rem"
+                ? "2rem"
+                : "1rem"
               : hasScrolled
               ? "8rem"
               : "2.8rem",
@@ -351,7 +351,7 @@ const Header = () => {
             initial="closed"
             animate="open"
             exit="closed"
-            className="fixed top-0 right-0 h-full w-80 bg-gradient-to-b from-[#001333] to-[#0e4fb5] z-50 flex flex-col md:hidden"
+            className="fixed top-0 right-0 h-full w-60 bg-gradient-to-b from-[#001333] to-[#0e4fb5] z-50 flex flex-col md:hidden"
           >
             <div className="p-6 flex-grow overflow-y-auto">
               {/* Mobile Menu Header */}
@@ -407,36 +407,28 @@ const Header = () => {
             {/* Mobile Contact Button - Fixed at bottom */}
             <div className="p-6 border-t flex border-blue-400/30 mt-auto gap-1">
               <motion.div
-                whileHover="hover"
-                initial="rest"
-                className="flex items-center relative w-[135px] h-[40px]"
+                variants={{
+                  rest: { width: 135 },
+                  hover: { width: 145 },
+                }}
+                className="flex items-center relative h-[40px]"
               >
-                {/* Arrow that moves to right and rotates on hover */}
-                <motion.div
-                  variants={{
-                    rest: { left: 0, rotate: 0 },
-                    hover: { left: "100%", x: "-100%", rotate: 360 },
-                  }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                  className="absolute top-1/2 transform -translate-y-1/2 z-0"
-                >
-                  <div className="flex bg-white rounded-full w-8 h-8 justify-center items-center shadow-md">
-                    <FaArrowRightLong className="text-[#0e4fb5] text-xs" />
+                <div className="flex items-center relative w-[132px] h-[40px]">
+                  {/* Arrow that moves to right and rotates on hover */}
+                  <div className="absolute left-0 top-1/2 transform -translate-y-1/2 transition-all duration-600 ease-in-out group-hover:left-full group-hover:-translate-x-full group-hover:rotate-360 z-0">
+                    <div className="flex bg-white rounded-full w-8 h-8 justify-center items-center shadow-md">
+                      <FaArrowRightLong className="text-[#0e4fb5] text-xs" />
+                    </div>
                   </div>
-                </motion.div>
 
-                {/* Button that moves to left on hover */}
-                <motion.button
-                  variants={{
-                    rest: { right: 0, x: 0 },
-                    hover: { right: "100%", x: "100%" },
-                  }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                  onClick={handleContactClick}
-                  className="text-xs text-white bg-[#001333] rounded-2xl px-4 py-2 font-medium flex items-center gap-2 absolute top-1/2 transform -translate-y-1/2 z-10 cursor-pointer whitespace-nowrap"
-                >
-                  Contact Us
-                </motion.button>
+                  {/* Button that moves to left on hover */}
+                  <button
+                    onClick={handleContactClick}
+                    className="text-xs text-white bg-[#001333] rounded-2xl px-4 py-2 font-medium flex items-center gap-2 transition-all duration-500 ease-in-out absolute right-0 top-1/2 transform -translate-y-1/2 group-hover:right-full group-hover:translate-x-full z-10 cursor-pointer whitespace-nowrap"
+                  >
+                    Contact Us
+                  </button>
+                </div>
               </motion.div>
             </div>
           </motion.div>
