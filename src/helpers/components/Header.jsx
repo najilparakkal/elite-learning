@@ -209,7 +209,9 @@ const Header = () => {
               padding: "1rem 1.5rem",
             }}
             transition={{ type: "spring", stiffness: 100, damping: 15 }}
-            className={`bg-gradient-to-r  from-[#001333] to-[#0e4fb5] flex items-center justify-between relative ${
+// bg-gradient-to-r  from-[#001333] to-[#0e4fb5]
+
+            className={` bg-white shadow-lg flex items-center justify-between relative ${
               isMobileMenuOpen
                 ? "md:opacity-100 opacity-0 pointer-events-none md:pointer-events-auto"
                 : "opacity-100"
@@ -221,7 +223,7 @@ const Header = () => {
               whileTap={{ scale: 0.95 }}
               className="flex items-center"
             >
-              <div className="text-white font-bold text-xl cursor-pointer">
+              <div className="text-[#115ACE] font-bold text-xl cursor-pointer">
                 <motion.img
                   onClick={() => navigate("/")}
                   whileHover={{ rotate: 5 }}
@@ -250,7 +252,7 @@ const Header = () => {
                     color: "#93c5fd",
                   }}
                   whileTap={{ y: 0 }}
-                  className="text-white transition-colors md:text-sm text-xs duration-200 font-sans cursor-pointer relative"
+                  className="text-[#3B77D6] font-bold transition-colors md:text-sm text-xs duration-200 font-sans cursor-pointer relative"
                 >
                   {item.name}
                   <motion.span
@@ -286,7 +288,7 @@ const Header = () => {
                   {/* Button that moves to left on hover */}
                   <button
                     onClick={handleContactClick}
-                    className="text-xs text-white bg-[#001333] rounded-2xl px-4 py-2 font-medium flex items-center gap-2 transition-all duration-500 ease-in-out absolute right-0 top-1/2 transform -translate-y-1/2 group-hover:right-full group-hover:translate-x-full z-10 cursor-pointer whitespace-nowrap"
+                    className="text-xs text-white bg-[#115ACE] rounded-2xl px-4 py-2 font-medium flex items-center gap-2 transition-all duration-500 ease-in-out absolute right-0 top-1/2 transform -translate-y-1/2 group-hover:right-full group-hover:translate-x-full z-10 cursor-pointer whitespace-nowrap"
                   >
                     Contact Us
                   </button>
@@ -299,7 +301,7 @@ const Header = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={toggleMobileMenu}
-              className="md:hidden text-white p-2 hover:bg-blue-700 rounded-lg transition-colors duration-200"
+              className="md:hidden text-[#115ACE] p-2 hover:bg-blue-700 rounded-lg transition-colors duration-200"
               aria-label="Toggle mobile menu"
             >
               <AnimatePresence mode="wait">
@@ -337,7 +339,7 @@ const Header = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+            className="fixed inset-0 bg-black bg-opacity-50 z-50 md:hidden"
             onClick={toggleMobileMenu}
           />
         )}
