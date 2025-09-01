@@ -57,7 +57,7 @@ const Courses = () => {
   ];
 
   return (
-    <div className="py-12 md:py-20  bg-gray-50">
+    <div className="py-12 md:py-20  bg-white">
       <div className="w-full mx-auto">
         {/* Header Section */}
         <div className="text-center mb-8 md:mb-12">
@@ -73,36 +73,35 @@ const Courses = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-12 md:mb-16">
           {courseCards.map((course, index) => (
             <div
-  key={index}
-  className="bg-white p-3 sm:p-2.5 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
->
-  {/* Card Header with Gradient */}
-  <div className="relative md:rounded-2xl rounded-lg h-40 sm:h-36 md:h-auto flex items-center justify-center">
-    <img
-      src="/banners/Artboard-5[1].webp"
-      alt="Banner"
-      className="w-full h-full object-center rounded-xl"
-    />
-  </div>
+              key={index}
+              className="bg-white p-3 sm:p-2.5 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
+            >
+              {/* Card Header with Gradient */}
+              <div className="relative md:rounded-2xl rounded-lg h-40 sm:h-36 md:h-auto flex items-center justify-center">
+                <img
+                  src="/banners/Artboard-5[1].webp"
+                  alt="Banner"
+                  className="w-full h-full object-center rounded-xl"
+                />
+              </div>
 
-  {/* Card Content */}
-  <div className="flex flex-col flex-1 pt-4 sm:pt-5 md:pt-6">
-    <h3 className="text-sm sm:text-base border w-fit px-2 py-2 sm:py-2 rounded-md border-[#115ACE] font-bold text-[#115ACE] mb-2 sm:mb-3">
-      {course.title}
-    </h3>
+              {/* Card Content */}
+              <div className="flex flex-col flex-1 pt-4 sm:pt-5 md:pt-6">
+                <h3 className="text-sm sm:text-base border w-fit px-2 py-2 sm:py-2 rounded-md border-[#115ACE] font-bold text-[#115ACE] mb-2 sm:mb-3">
+                  {course.title}
+                </h3>
 
-    {/* description grows */}
-    <p className="text-gray-900 font-semibold mb-4 sm:mb-6 text-xs sm:text-sm leading-relaxed flex-grow">
-      {course.description}
-    </p>
+                {/* description grows */}
+                <p className="text-gray-900 font-semibold mb-4 sm:mb-6 text-xs sm:text-sm leading-relaxed flex-grow">
+                  {course.description}
+                </p>
 
-    {/* button stays bottom */}
-    <button className="mt-auto w-full text-xs sm:text-sm bg-[#001333] text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg font-medium hover:bg-slate-700 transition-colors duration-200">
-      {course.button}
-    </button>
-  </div>
-</div>
-
+                {/* button stays bottom */}
+                <button className="mt-auto w-full text-xs sm:text-sm bg-[#001333] text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg font-medium hover:bg-slate-700 transition-colors duration-200">
+                  {course.button}
+                </button>
+              </div>
+            </div>
           ))}
         </div>
 
@@ -111,7 +110,7 @@ const Courses = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="text-start justify-start items-start flex flex-col border pt-6 sm:pt-8 md:pt-10 px-3 sm:px-4 pb-6 sm:pb-7 md:pb-9 rounded-xl border-gray-200"
+              className="text-start justify-center items-center flex flex-col border pt-6 sm:pt-8 md:pt-10 px-3 sm:px-4 pb-6 sm:pb-7 md:pb-9 rounded-xl border-gray-200"
             >
               <div className="w-9 h-9 sm:w-10 sm:h-10 bg-[#4183df] text-blue-200 rounded-lg flex items-center justify-center mb-3 sm:mb-4">
                 {feature.icon}
@@ -119,7 +118,7 @@ const Courses = () => {
               <h4 className="text-sm sm:text-base font-bold text-[#115ACE] mb-2">
                 {feature.title}
               </h4>
-              <p className="text-gray-900 font-semibold text-xs sm:text-sm leading-5">
+              <p className="text-gray-900 text-center font-semibold text-xs sm:text-sm leading-5">
                 {feature.text}
               </p>
             </div>

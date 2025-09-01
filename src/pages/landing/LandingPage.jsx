@@ -40,7 +40,7 @@ export default function Home() {
     },
   ];
   return (
-    <div className="min-h-screen bg-gray-50 sora">
+    <div className="min-h-screen bg-white sora">
       <Header />
 
       <main className="relative overflow-hidden px-4 md:px-8 lg:px-12 py-10 max-w-7xl mx-auto">

@@ -189,14 +189,14 @@ const Header = () => {
                 : "1rem"
               : hasScrolled
               ? "8rem"
-              : "2.8rem",
+              : "2rem",
             paddingRight: isMobile
               ? hasScrolled
                 ? "2rem"
                 : "1rem"
               : hasScrolled
               ? "8rem"
-              : "2.8rem",
+              : "2rem",
           }}
           transition={{ type: "spring", stiffness: 100, damping: 15 }}
           className="w-full max-w-7xl mx-auto"
@@ -209,13 +209,13 @@ const Header = () => {
               padding: "1rem 1.5rem",
             }}
             transition={{ type: "spring", stiffness: 100, damping: 15 }}
-// bg-gradient-to-r  from-[#001333] to-[#0e4fb5]
-
-            className={` bg-white shadow-lg flex items-center justify-between relative ${
-              isMobileMenuOpen
-                ? "md:opacity-100 opacity-0 pointer-events-none md:pointer-events-auto"
-                : "opacity-100"
-            }`}
+            className={`bg-white flex items-center justify-between relative 
+    ${
+      isMobileMenuOpen
+        ? "md:opacity-100 opacity-0 pointer-events-none md:pointer-events-auto"
+        : "opacity-100"
+    } 
+    ${hasScrolled ? "shadow-lg" : ""}`} // ✅ shadow when scrolled
           >
             {/* Logo */}
             <motion.div
@@ -227,7 +227,7 @@ const Header = () => {
                 <motion.img
                   onClick={() => navigate("/")}
                   whileHover={{ rotate: 5 }}
-                  src="/WhatsApp_Image_2025-08-23_at_15.34.15_9ac235af-removebg-preview.png"
+                  src="/Asset 1.png"
                   alt=""
                   className="md:w-auto md:h-6 h-5"
                 />
@@ -252,7 +252,7 @@ const Header = () => {
                     color: "#93c5fd",
                   }}
                   whileTap={{ y: 0 }}
-                  className="text-[#3B77D6] font-bold transition-colors md:text-sm text-xs duration-200 font-sans cursor-pointer relative"
+                  className="text-[#001333] font-bold transition-colors md:text-sm text-xs duration-200 font-sans cursor-pointer relative"
                 >
                   {item.name}
                   <motion.span
@@ -368,7 +368,7 @@ const Header = () => {
                       navigate("/");
                       setIsMobileMenuOpen(false);
                     }}
-                    src="/WhatsApp_Image_2025-08-23_at_15.34.15_9ac235af-removebg-preview.png"
+                    src="public/Asset 1.png"
                     alt=""
                     className="w-auto h-6"
                   />
