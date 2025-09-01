@@ -47,7 +47,7 @@ const Contact = () => {
 
   return (
     <div className="h-auto  lg:px-16 px-4 pb-8 md:pb-10 pt-12 md:pt-20 w-full rounded-t-2xl bg-gradient-to-b from-[#0e4fb5] to-[#000c20]">
-      <div className="flex w-full flex-col md:flex-row">
+      <div className="flex w-full flex-col md:flex-row  max-w-7xl mx-auto">
         <div className="w-full md:w-1/2 px-2 sm:px-4 md:px-8 lg:px-12 xl:px-20">
           <img
             src="/banners/Asset 4[2].png"
@@ -64,7 +64,7 @@ const Contact = () => {
             you with the right guidance, skills, and support to turn your vision
             into reality.
           </p>
-          <button className="text-xs sm:text-sm w-fit text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-md bg-[#001333]">
+          <button className="text-xs sm:text-sm w-fit text-white px-7 py-2 sm:px-4 sm:py-2 rounded-md bg-[#001333]">
             About Us
           </button>
         </div>
