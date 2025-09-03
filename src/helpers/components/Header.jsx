@@ -206,7 +206,7 @@ const Header = () => {
             initial={{ borderRadius: 16 }}
             animate={{
               borderRadius: 16,
-              padding: "1rem 1.5rem",
+              padding: "0.8rem 1.5rem",
             }}
             transition={{ type: "spring", stiffness: 100, damping: 15 }}
             className={`bg-white flex items-center justify-between relative 
@@ -226,10 +226,10 @@ const Header = () => {
               <div className="text-[#115ACE] font-bold text-xl cursor-pointer">
                 <motion.img
                   onClick={() => navigate("/")}
-                  whileHover={{ rotate: 5 }}
+                  // whileHover={{ rotate: 5 }}
                   src="/Asset 1.png"
                   alt=""
-                  className="md:w-auto md:h-6 h-5"
+                  className="md:w-auto md:h-5 h-5"
                 />
               </div>
             </motion.div>
@@ -249,10 +249,10 @@ const Header = () => {
                   onClick={(e) => handleNavigation(e, item)}
                   whileHover={{
                     y: -2,
-                    color: "#93c5fd",
+                    color: "#0e4fb5",
                   }}
                   whileTap={{ y: 0 }}
-                  className="text-[#001333] font-bold transition-colors md:text-sm text-xs duration-200 font-sans cursor-pointer relative"
+                  className="text-[#001333] font-bold transition-colors md:text-[18px] text-[14px] duration-200 font-sans cursor-pointer relative"
                 >
                   {item.name}
                   <motion.span
