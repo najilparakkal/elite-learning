@@ -19,12 +19,12 @@ const HelpWidget = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="bg-white p-2 rounded-l-lg shadow-md flex items-center gap-2 transition-all duration-500 hover:bg-blue-50 z-10"
-          style={{ width: hoveredItem === 'whatsapp' ? "172px" : "40px" }}
-          onMouseEnter={() => setHoveredItem('whatsapp')}
+          style={{ width: hoveredItem === "whatsapp" ? "172px" : "40px" }}
+          onMouseEnter={() => setHoveredItem("whatsapp")}
           onMouseLeave={() => setHoveredItem(null)}
         >
           <RiWhatsappFill className="text-[#115ACE] w-5 h-5 flex-shrink-0" />
-          {hoveredItem === 'whatsapp' && (
+          {hoveredItem === "whatsapp" && (
             <span className="whitespace-nowrap text-gray-800 text-xs">
               Chat on WhatsApp
             </span>
@@ -37,12 +37,12 @@ const HelpWidget = () => {
         <a
           href="mailto:info@example.com"
           className="bg-white p-2 rounded-l-lg shadow-md flex items-center gap-2 transition-all duration-500 hover:bg-blue-50 z-10"
-          style={{ width: hoveredItem === 'email' ? "144px" : "40px" }}
-          onMouseEnter={() => setHoveredItem('email')}
+          style={{ width: hoveredItem === "email" ? "144px" : "40px" }}
+          onMouseEnter={() => setHoveredItem("email")}
           onMouseLeave={() => setHoveredItem(null)}
         >
           <MdEmail className="text-[#115ACE] w-5 h-5 flex-shrink-0" />
-          {hoveredItem === 'email' && (
+          {hoveredItem === "email" && (
             <span className="whitespace-nowrap text-gray-800 text-xs">
               Email Us
             </span>
@@ -55,12 +55,12 @@ const HelpWidget = () => {
         <a
           href="tel:+1234567890"
           className="bg-white p-2 rounded-l-lg shadow-md flex items-center gap-2 transition-all duration-500 hover:bg-blue-50 z-10"
-          style={{ width: hoveredItem === 'phone' ? "144px" : "40px" }}
-          onMouseEnter={() => setHoveredItem('phone')}
+          style={{ width: hoveredItem === "phone" ? "144px" : "40px" }}
+          onMouseEnter={() => setHoveredItem("phone")}
           onMouseLeave={() => setHoveredItem(null)}
         >
           <MdAddCall className="text-[#115ACE] w-5 h-5 flex-shrink-0" />
-          {hoveredItem === 'phone' && (
+          {hoveredItem === "phone" && (
             <span className="whitespace-nowrap text-gray-800 text-xs">
               Call Us
             </span>

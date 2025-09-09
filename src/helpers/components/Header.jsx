@@ -252,7 +252,7 @@ const Header = () => {
                     color: "#0e4fb5",
                   }}
                   whileTap={{ y: 0 }}
-                  className="text-[#001333] font-bold transition-colors md:text-[18px] text-[14px] duration-200 font-sans cursor-pointer relative"
+                  className="text-[#001333] font-semibold transition-colors md:text-[19px] text-[14px] duration-200 font-sans cursor-pointer relative"
                 >
                   {item.name}
                   <motion.span
