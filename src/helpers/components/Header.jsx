@@ -43,7 +43,6 @@ const Header = () => {
       document.body.style.overflow = "unset";
     }
 
-    // Cleanup function to reset overflow when component unmounts
     return () => {
       document.body.style.overflow = "unset";
     };
