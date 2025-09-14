@@ -24,26 +24,26 @@ const Team = () => {
       position: "CTO",
       image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
     },
-    {
-      name: "Muhammad Shabeer",
-      position: "Sales Head",
-      image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
-    },
-    {
-      name: "Muhammad Shabeer",
-      position: "Marketing Head",
-      image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
-    },
-    {
-      name: "Team Member 5",
-      position: "Finance Director",
-      image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
-    },
-    {
-      name: "Team Member 6",
-      position: "Operations Manager",
-      image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
-    },
+    // {
+    //   name: "Muhammad Shabeer",
+    //   position: "Sales Head",
+    //   image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+    // },
+    // {
+    //   name: "Muhammad Shabeer",
+    //   position: "Marketing Head",
+    //   image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+    // },
+    // {
+    //   name: "Team Member 5",
+    //   position: "Finance Director",
+    //   image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+    // },
+    // {
+    //   name: "Team Member 6",
+    //   position: "Operations Manager",
+    //   image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+    // },
   ];
 
   const [slidesToShow, setSlidesToShow] = useState(4);
@@ -52,7 +52,7 @@ const Team = () => {
     const updateSlides = () => {
       const width = window.innerWidth;
       if (width <= 480) {
-        setSlidesToShow(1);
+        setSlidesToShow(2);
       } else if (width <= 640) {
         setSlidesToShow(2);
       } else if (width <= 768) {
@@ -153,7 +153,7 @@ const Team = () => {
       {
         breakpoint: 480, // Mobile
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -170,10 +170,7 @@ const Team = () => {
           initial="hidden"
           animate={controls}
         >
-          <motion.div
-            className="lg:w-1/2 mb-6 lg:mb-0"
-            variants={itemVariants}
-          >
+          <motion.div className="lg:w-1/2 mb-6 lg:mb-0" variants={itemVariants}>
             <motion.h2
               className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-2"
               variants={slideUpVariants}
@@ -188,10 +185,7 @@ const Team = () => {
             </motion.h3>
           </motion.div>
 
-          <motion.div
-            className="lg:w-1/2 md:mt-4 flex"
-            variants={itemVariants}
-          >
+          <motion.div className="lg:w-1/2 md:mt-4 flex" variants={itemVariants}>
             <div className="md:w-1/3"></div>
             <motion.p
               className="text-gray-600 text-sm sm:text-base md:w-2/3 items-end leading-relaxed"
@@ -207,86 +201,84 @@ const Team = () => {
 
         {/* Team Members Slider */}
         <motion.div
-          className="relative mb-8"
+          className="relative mb-8 flex justify-center gap-6 flex-wrap"
           variants={fadeInVariants}
           initial="hidden"
           animate={controls}
         >
-          <Slider ref={setSliderRef} {...sliderSettings}>
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={index}
-                className="px-2 sm:px-3 md:pb-10 pb-6 focus:outline-none"
-                variants={itemVariants}
-                initial="hidden"
-                animate={controls}
-                custom={index}
-              >
-                <div className="text-start border p-3 sm:p-4 rounded-xl border-gray-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  {/* Profile Image */}
-                  <motion.div
-                    className="relative mb-3"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >
-                    <div className="w-full h-68 sm:h-56 mx-auto rounded-lg overflow-hidden bg-gray-100">
-                      <img
-                        src={member.image || "/placeholder.svg"}
-                        alt={member.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </motion.div>
+          {teamMembers.map((member, index) => (
+            <motion.div
+              key={index}
+              className="px-2 sm:px-3 md:pb-10 pb-6 focus:outline-none"
+              variants={itemVariants}
+              initial="hidden"
+              animate={controls}
+              custom={index}
+            >
+              <div className="text-start border p-3 md:h-[380px] h-[350px] sm:p-4 rounded-xl border-gray-100 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col w-[280px] sm:w-[300px]">
+                {/* Profile Image */}
+                <motion.div
+                  className="relative mb-3"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <div className="w-full h-fit sm:h-56 mx-auto rounded-lg overflow-hidden bg-gray-100">
+                    <img
+                      src={member.image || "/placeholder.svg"}
+                      alt={member.name}
+                      className="w-full h-full md:object-cover object-fill"
+                    />
+                  </div>
+                </motion.div>
 
-                  {/* Member Info */}
-                  <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-1">
-                    {member.name}
-                  </h4>
-                  <p className="text-sm sm:text-base text-gray-600 mb-3">
-                    {member.position}
-                  </p>
+                {/* Member Info */}
+                <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-1">
+                  {member.name}
+                </h4>
+                <p className="text-sm sm:text-base text-gray-600">
+                  {member.position}
+                </p>
 
-                  {/* Social Icons */}
+                {/* Social Icons fixed at bottom */}
+                <motion.div
+                  className="flex justify-start space-x-2 mt-auto"
+                  variants={containerVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                >
                   <motion.div
-                    className="flex justify-start space-x-2"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
+                    className="w-6 h-6 sm:w-7 sm:h-7 p-1 rounded-full flex justify-center items-center bg-gray-800 transition-colors hover:bg-blue-700 cursor-pointer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    variants={itemVariants}
                   >
-                    <motion.div
-                      className="w-6 h-6 sm:w-7 sm:h-7 p-1 rounded-full flex justify-center items-center bg-gray-800 transition-colors hover:bg-blue-700 cursor-pointer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      variants={itemVariants}
-                    >
-                      <FaFacebookF className="text-white text-xs" />
-                    </motion.div>
-                    <motion.div
-                      className="w-6 h-6 sm:w-7 sm:h-7 p-1 rounded-full flex justify-center items-center bg-gray-800 transition-colors hover:bg-pink-600 cursor-pointer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      variants={itemVariants}
-                    >
-                      <FaInstagram className="text-white text-xs" />
-                    </motion.div>
-                    <motion.div
-                      className="w-6 h-6 sm:w-7 sm:h-7 p-1 rounded-full flex justify-center items-center bg-gray-800 transition-colors hover:bg-green-500 cursor-pointer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      variants={itemVariants}
-                    >
-                      <FaWhatsapp className="text-white text-xs" />
-                    </motion.div>
+                    <FaFacebookF className="text-white text-xs" />
                   </motion.div>
-                </div>
-              </motion.div>
-            ))}
-          </Slider>
+                  <motion.div
+                    className="w-6 h-6 sm:w-7 sm:h-7 p-1 rounded-full flex justify-center items-center bg-gray-800 transition-colors hover:bg-pink-600 cursor-pointer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    variants={itemVariants}
+                  >
+                    <FaInstagram className="text-white text-xs" />
+                  </motion.div>
+                  <motion.div
+                    className="w-6 h-6 sm:w-7 sm:h-7 p-1 rounded-full flex justify-center items-center bg-gray-800 transition-colors hover:bg-green-500 cursor-pointer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    variants={itemVariants}
+                  >
+                    <FaWhatsapp className="text-white text-xs" />
+                  </motion.div>
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
 
         {/* Navigation Arrows */}
-        <motion.div
+        {/* <motion.div
           className="flex justify-center items-center space-x-4"
           variants={fadeInVariants}
           initial="hidden"
@@ -319,7 +311,7 @@ const Team = () => {
               className="h-5 w-5 sm:h-6 sm:w-6"
             />
           </motion.button>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

@@ -58,7 +58,7 @@ const Header = () => {
     { name: "About Us", href: "/about" },
     { name: "Courses", href: "/courses" },
     { name: "Our Team", href: "#team", isSection: true },
-    { name: "Reviews", href: "/reviews" },
+    { name: "Reviews", href: "#reviews", isSection: true },
   ];
 
   const handleNavigation = (e, link) => {
@@ -264,7 +264,6 @@ const Header = () => {
               ))}
             </motion.div>
 
-            {/* Desktop Contact Button */}
             <motion.div
               whileHover="hover"
               initial="rest"

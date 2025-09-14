@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
 import Header from "../../helpers/components/Header";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -7,9 +7,123 @@ import "slick-carousel/slick/slick-theme.css";
 import Courses from "./Courses";
 import Team from "./Team";
 import Contact from "../../helpers/components/Contact";
-import Footer from "../../helpers/components/Footer";
+import Reviews from "./Reviews";
+
+const hiringpartners = [
+  {
+    image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+  },
+  {
+    image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+  },
+  {
+    image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+  },
+  {
+    image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+  },
+  {
+    image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+  },
+  {
+    image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+  },
+];
 
 export default function Home() {
+  // const [newSliderRef, setNewSliderRef] = useState(null);
+  const ref = useRef(null);
+  const newSliderRef = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const controls = useAnimation();
+  const [slidesToShow, setSlidesToShow] = useState(4);
+
+  useEffect(() => {
+    const updateSlides = () => {
+      const width = window.innerWidth;
+      if (width <= 480) {
+        setSlidesToShow(1);
+      } else if (width <= 640) {
+        setSlidesToShow(2);
+      } else if (width <= 768) {
+        setSlidesToShow(3);
+      } else if (width <= 1024) {
+        setSlidesToShow(4);
+      } else {
+        setSlidesToShow(4);
+      }
+    };
+
+    updateSlides(); // run on mount
+    window.addEventListener("resize", updateSlides);
+
+    return () => {
+      window.removeEventListener("resize", updateSlides);
+    };
+  }, []);
+
+  // Animation control
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [isInView, controls]);
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+  const slideUpVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const fadeInVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  // 🔹 Create slider settings once
+  const partnersSliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 5000, // ✅ slow continuous scroll
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 0, // ✅ no delay between slides
+    cssEase: "linear", // ✅ smooth linear scroll
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: { slidesToShow: 3, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 3, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 480,
+        settings: { slidesToShow: 3, slidesToScroll: 1 },
+      },
+    ],
+  };
+
   const sliderSettings = {
     dots: false,
     infinite: true,
@@ -46,11 +160,11 @@ export default function Home() {
   // Animation variants
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const staggerContainer = {
@@ -58,41 +172,41 @@ export default function Home() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const slideInFromRight = {
     hidden: { opacity: 0, x: 100 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
   };
 
   const scaleUp = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
   };
 
   const buttonHover = {
     scale: 1.05,
     boxShadow: "0 5px 20px rgba(0, 0, 0, 0.3)",
-    transition: { duration: 0.3 }
+    transition: { duration: 0.3 },
   };
 
   const buttonTap = {
-    scale: 0.98
+    scale: 0.98,
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="min-h-screen bg-white sora"
       initial="hidden"
       animate="visible"
@@ -100,29 +214,29 @@ export default function Home() {
     >
       <Header />
 
-      <main className="relative overflow-hidden px-4 md:px-8 lg:px-12 py-10 max-w-7xl mx-auto">
+      <main className="relative overflow-hidden px-4 md:px-8 lg:px-12 pt-10  max-w-7xl mx-auto">
         {/* Hero Section */}
         <section className="py-10 md:py-16 lg:py-24">
           <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left Content */}
-            <motion.div 
+            <motion.div
               className="space-y-6 md:space-y-8 lg:pr-10"
               variants={staggerContainer}
             >
               <motion.div className="space-y-3 md:space-y-4" variants={fadeIn}>
-                <motion.h1 
+                <motion.h1
                   className="text-3xl md:text-[64px] font-bold text-gray-900 leading-tight"
                   variants={fadeIn}
                 >
-                  Kerala's First{" "}
+                  India's{" "}
                 </motion.h1>
-                <motion.span 
+                <motion.span
                   className="text-[#3B77D6] font-bold text-3xl md:text-[64px] block"
                   variants={fadeIn}
                 >
                   Exclusive CPA Provider
                 </motion.span>
-                <motion.p 
+                <motion.p
                   className="text-sm md:text-base font-semibold text-gray-600 leading-6 max-w-lg"
                   variants={fadeIn}
                 >
@@ -136,7 +250,7 @@ export default function Home() {
               </motion.div>
 
               {/* CTA Button */}
-              <motion.button 
+              <motion.button
                 className="bg-[#115ACE] text-sm md:text-base text-white px-5 py-3 md:py-4 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 shadow-[0_2px_15px_rgba(0,0,0,0.5)] hover:bg-[#0d4699]"
                 variants={fadeIn}
                 whileHover={buttonHover}
@@ -152,7 +266,7 @@ export default function Home() {
               </motion.button>
 
               {/* Features */}
-              <motion.div 
+              <motion.div
                 className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-6 md:pt-8"
                 variants={staggerContainer}
               >
@@ -161,8 +275,8 @@ export default function Home() {
                   "Structured Path",
                   "Strong Community",
                 ].map((item, idx) => (
-                  <motion.div 
-                    key={idx} 
+                  <motion.div
+                    key={idx}
                     className="flex items-center gap-1"
                     variants={fadeIn}
                     whileHover={{ x: 5 }}
@@ -182,8 +296,8 @@ export default function Home() {
             </motion.div>
 
             {/* Right Content - Hero Image */}
-            <motion.div 
-              className="relative mt-6 flex justify-center lg:justify-end w-full"
+            <motion.div
+              className="relative  md:-mt-10 flex justify-center lg:justify-end w-full"
               variants={slideInFromRight}
             >
               {/* Image container */}
@@ -198,7 +312,7 @@ export default function Home() {
                 />
 
                 {/* Floating Badge */}
-                <motion.div 
+                <motion.div
                   className="absolute top-16 md:top-28 left-0 md:left-16 bg-white rounded-lg px-3 md:px-4 w-28 md:w-32 py-1.5 shadow-lg"
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -227,12 +341,12 @@ export default function Home() {
         </section>
 
         {/* Bottom Section with Slider */}
-        <motion.section 
+        <motion.section
           className="flex flex-col md:flex-row items-center md:items-start mt-12 md:mt-16 md:h-20 gap-6 md:gap-0"
           variants={fadeIn}
         >
           {/* Left Text */}
-          <motion.div 
+          <motion.div
             className="w-full md:w-1/3 flex flex-col justify-center text-center md:text-left"
             variants={fadeIn}
           >
@@ -250,8 +364,8 @@ export default function Home() {
               className="w-full md:w-[80%]"
             >
               {slides.map((slide, idx) => (
-                <motion.div 
-                  key={idx} 
+                <motion.div
+                  key={idx}
                   className=""
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -265,7 +379,7 @@ export default function Home() {
             </Slider>
 
             {/* Custom Arrows */}
-            <motion.div 
+            <motion.div
               className="flex items-center gap-4 md:gap-6 md:w-[10%] justify-center md:justify-between"
               variants={fadeIn}
             >
@@ -292,7 +406,45 @@ export default function Home() {
         <Courses />
         <Team />
       </main>
+      <div className="pb-10">
+        <div className="h-fill w-full bg-black flex max-w-7xl px-4 md:px-8 lg:px-12 mx-auto">
+          <div className="flex items-center w-[20%] font-semibold">
+            <h6 className="md:text-xl text-sm text-white">
+              Our hiring partners
+            </h6>
+          </div>
 
+          <div className="w-[80%] mx-auto">
+            <motion.div
+              className="relative   justify-center items-center  h-full w-full"
+              variants={fadeInVariants}
+              animate={controls}
+            >
+              <Slider ref={newSliderRef} {...partnersSliderSettings}>
+                {hiringpartners.map((member, index) => (
+                  <motion.div
+                    key={index}
+                    className="relative flex items-center justify-center h-full"
+                  >
+                    {/* Image */}
+                    <img
+                      src={member.image}
+                      alt={`hiring partner ${index + 1}`}
+                      className="max-h-20 object-contain mx-auto"
+                    />
+
+                    {/* Black overlay */}
+                    <div className="absolute inset-0 bg-black/50"></div>
+                  </motion.div>
+                ))}
+              </Slider>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+      <div className="max-w-7xl px-4 md:px-8 lg:px-12 mx-auto">
+        <Reviews />
+      </div>
       <Contact />
     </motion.div>
   );
