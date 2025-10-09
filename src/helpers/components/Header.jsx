@@ -54,52 +54,72 @@ const Header = () => {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
+    { name: "About Us", href: "/about" }, 
     { name: "Courses", href: "/courses" },
     { name: "Our Team", href: "#team", isSection: true },
     { name: "Reviews", href: "#reviews", isSection: true },
   ];
+const handleNavigation = (e, link) => {
+  e.preventDefault();
+  setIsMobileMenuOpen(false);
 
-  const handleNavigation = (e, link) => {
-    e.preventDefault();
-
-    // Close mobile menu if open
-    setIsMobileMenuOpen(false);
-
-    if (link.isSection) {
-      // If we're not on the homepage, navigate there first
-      if (location.pathname !== "/") {
-        navigate("/");
-        // Wait for navigation to complete before scrolling
-        setTimeout(() => {
-          scrollToSection(link.href);
-        }, 100);
-      } else {
-        // Already on homepage, just scroll to section
-        scrollToSection(link.href);
-      }
-    } else {
-      // Regular navigation
-      navigate(link.href);
-    }
-  };
-
-  const scrollToSection = (sectionId) => {
-    // Remove the # from the id
-    const id = sectionId.replace("#", "");
-
-    // Find the element
-    const element = document.getElementById(id);
-
-    if (element) {
-      // Scroll to the element smoothly
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
+  if (link.isSection) {
+    if (location.pathname !== "/") {
+      navigate("/", { 
+        state: { scrollTo: link.href } 
       });
+    } else {
+      scrollToSection(link.href);
     }
-  };
+  } else {
+    navigate(link.href);
+  }
+};
 
+// Handle scroll after navigation
+useEffect(() => {
+  if (location.state?.scrollTo) {
+    const scrollTo = location.state.scrollTo;
+    
+    const attemptScroll = () => {
+      const id = scrollTo.replace("#", "");
+      const element = document.getElementById(id);
+      
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+        // Clear the state
+        navigate(location.pathname, { replace: true, state: {} });
+        return true;
+      }
+      return false;
+    };
+
+    // Try immediately
+    if (!attemptScroll()) {
+      // If not found, try again after a delay
+      const timer = setTimeout(() => {
+        attemptScroll();
+      }, 300);
+      
+      return () => clearTimeout(timer);
+    }
+  }
+}, [location.state, navigate, location.pathname]);
+
+const scrollToSection = (sectionId) => {
+  const id = sectionId.replace("#", "");
+  const element = document.getElementById(id);
+  
+  if (element) {
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+};
   const handleContactClick = (e) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Header from "../../helpers/components/Header";
 import EnquiryModal from "./Enquary";
 import { BiAward, BiGlobe, BiTrendingUp } from "react-icons/bi";
@@ -9,11 +9,11 @@ import { motion, useInView } from "framer-motion";
 // Animation variants
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
-  }
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
 };
 
 const staggerContainer = {
@@ -22,27 +22,27 @@ const staggerContainer = {
     opacity: 1,
     transition: {
       staggerChildren: 0.15,
-      delayChildren: 0.2
-    }
-  }
+      delayChildren: 0.2,
+    },
+  },
 };
 
 const slideInFromRight = {
   hidden: { opacity: 0, x: 50 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     x: 0,
-    transition: { duration: 0.7, ease: "easeOut" }
-  }
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
 };
 
 const scaleUp = {
   hidden: { opacity: 0, scale: 0.9 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     scale: 1,
-    transition: { duration: 0.5, ease: "easeOut" }
-  }
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
 };
 
 // Main Course Component
@@ -53,6 +53,9 @@ const Courses = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen sora bg-white" ref={ref}>
@@ -60,14 +63,14 @@ const Courses = () => {
 
       <div className="w-full max-w-7xl mx-auto md:px-12 lg:px-16 px-4 pt-20 md:pt-16  lg:pt-24 py-5 md:py-16 lg:py-24">
         {/* Course Header */}
-        <motion.div 
+        <motion.div
           className="mt-6 md:mt-10 py-6 md:py-10 mb-4 md:mb-6"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={fadeIn}
         >
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 md:mb-8 gap-4">
-            <motion.h1 
+            <motion.h1
               className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-bold text-gray-800"
               variants={fadeIn}
             >
@@ -84,7 +87,7 @@ const Courses = () => {
             </motion.button>
           </div>
 
-          <motion.div 
+          <motion.div
             className="pb-6 md:pb-10 border-gray-400 border-b"
             variants={fadeIn}
           >
@@ -101,13 +104,13 @@ const Courses = () => {
         </motion.div>
 
         {/* Key Details Section */}
-        <motion.div 
+        <motion.div
           className="mb-6"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={staggerContainer}
         >
-          <motion.h2 
+          <motion.h2
             className="text-2xl sm:text-3xl md:text-4xl lg:text-[35px] font-bold text-gray-800 text-center mb-6 md:mb-8"
             variants={fadeIn}
           >
@@ -116,7 +119,7 @@ const Courses = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {/* Left Column */}
-            <motion.div 
+            <motion.div
               className="space-y-6 md:space-y-8 w-full md:w-[90%] lg:w-[80%]"
               variants={staggerContainer}
             >
@@ -126,10 +129,7 @@ const Courses = () => {
                   1. Eligibility
                 </h3>
                 <ul className="space-y-4 md:space-y-5 text-gray-500 font-semibold text-sm md:text-base">
-                  <motion.li 
-                    className="flex items-start"
-                    variants={fadeIn}
-                  >
+                  <motion.li className="flex items-start" variants={fadeIn}>
                     <img
                       src="/icons/Palne icon (1080 x 1080 px) (2)[1].png"
                       alt=""
@@ -138,10 +138,7 @@ const Courses = () => {
                     Bachelor's degree (Commerce / Accounting / Finance
                     preferred)
                   </motion.li>
-                  <motion.li 
-                    className="flex items-start"
-                    variants={fadeIn}
-                  >
+                  <motion.li className="flex items-start" variants={fadeIn}>
                     <img
                       src="/icons/Palne icon (1080 x 1080 px) (2)[1].png"
                       alt=""
@@ -150,10 +147,7 @@ const Courses = () => {
                     Most states require 150 credit hours of education
                     (equivalent to a Master's or CA background in India)
                   </motion.li>
-                  <motion.li 
-                    className="flex items-start"
-                    variants={fadeIn}
-                  >
+                  <motion.li className="flex items-start" variants={fadeIn}>
                     <img
                       src="/icons/Palne icon (1080 x 1080 px) (2)[1].png"
                       alt=""
@@ -171,10 +165,7 @@ const Courses = () => {
                   3. Passing Criteria
                 </h3>
                 <ul className="space-y-4 md:space-y-5 text-gray-500 font-semibold text-sm md:text-base">
-                  <motion.li 
-                    className="flex items-start"
-                    variants={fadeIn}
-                  >
+                  <motion.li className="flex items-start" variants={fadeIn}>
                     <img
                       src="/icons/Palne icon (1080 x 1080 px) (2)[1].png"
                       alt=""
@@ -182,10 +173,7 @@ const Courses = () => {
                     />{" "}
                     Minimum 75 marks out of 99 required in each section.
                   </motion.li>
-                  <motion.li 
-                    className="flex items-start"
-                    variants={fadeIn}
-                  >
+                  <motion.li className="flex items-start" variants={fadeIn}>
                     <img
                       src="/icons/Palne icon (1080 x 1080 px) (2)[1].png"
                       alt=""
@@ -203,16 +191,13 @@ const Courses = () => {
                   5. Career Opportunities
                 </h3>
                 <ul className="space-y-4 md:space-y-5 text-gray-500 font-semibold text-sm md:text-base">
-                  <motion.li 
+                  <motion.li
                     className="flex items-start text-black font-bold ml-0 md:ml-8"
                     variants={fadeIn}
                   >
                     CPA professionals are in high demand across industries:
                   </motion.li>
-                  <motion.li 
-                    className="flex items-start"
-                    variants={fadeIn}
-                  >
+                  <motion.li className="flex items-start" variants={fadeIn}>
                     <img
                       src="/icons/Palne icon (1080 x 1080 px) (2)[1].png"
                       alt=""
@@ -220,10 +205,7 @@ const Courses = () => {
                     />{" "}
                     Big 4 firms: Deloitte, PwC, EY, KPMG
                   </motion.li>
-                  <motion.li 
-                    className="flex items-start"
-                    variants={fadeIn}
-                  >
+                  <motion.li className="flex items-start" variants={fadeIn}>
                     <img
                       src="/icons/Palne icon (1080 x 1080 px) (2)[1].png"
                       alt=""
@@ -231,10 +213,7 @@ const Courses = () => {
                     />{" "}
                     MNCs, financial institutions, consulting firms
                   </motion.li>
-                  <motion.li 
-                    className="flex items-start"
-                    variants={fadeIn}
-                  >
+                  <motion.li className="flex items-start" variants={fadeIn}>
                     <img
                       src="/icons/Palne icon (1080 x 1080 px) (2)[1].png"
                       alt=""
@@ -248,31 +227,25 @@ const Courses = () => {
             </motion.div>
 
             {/* Right Column */}
-            <motion.div 
+            <motion.div
               className="space-y-6 md:space-y-8 w-full md:w-[90%] lg:w-[80%]"
               variants={staggerContainer}
             >
               {/* Exam Structure */}
-              <motion.div 
-                className="mb-6 md:mb-10"
-                variants={slideInFromRight}
-              >
+              <motion.div className="mb-6 md:mb-10" variants={slideInFromRight}>
                 <h3 className="text-lg md:text-xl font-bold text-[#3B77D6] mb-4 md:mb-9">
                   2. Exam Structure (by AICPA – American Institute of CPAs)
                 </h3>
 
                 <ul className="space-y-4 md:space-y-5 text-gray-500 font-semibold text-sm md:text-base">
-                  <motion.li 
+                  <motion.li
                     className="flex items-start text-black font-bold ml-0 md:ml-8"
                     variants={fadeIn}
                   >
                     The CPA USA exam has 4 sections:
                   </motion.li>
 
-                  <motion.li 
-                    className="flex items-start"
-                    variants={fadeIn}
-                  >
+                  <motion.li className="flex items-start" variants={fadeIn}>
                     <img
                       src="/icons/Palne icon (1080 x 1080 px) (2)[1].png"
                       alt=""
@@ -280,10 +253,7 @@ const Courses = () => {
                     />{" "}
                     Auditing & Attestation (AUD)
                   </motion.li>
-                  <motion.li 
-                    className="flex items-start"
-                    variants={fadeIn}
-                  >
+                  <motion.li className="flex items-start" variants={fadeIn}>
                     <img
                       src="/icons/Palne icon (1080 x 1080 px) (2)[1].png"
                       alt=""
@@ -291,10 +261,7 @@ const Courses = () => {
                     />{" "}
                     Financial Accounting & Reporting (FAR)
                   </motion.li>
-                  <motion.li 
-                    className="flex items-start"
-                    variants={fadeIn}
-                  >
+                  <motion.li className="flex items-start" variants={fadeIn}>
                     <img
                       src="/icons/Palne icon (1080 x 1080 px) (2)[1].png"
                       alt=""
@@ -302,10 +269,7 @@ const Courses = () => {
                     />{" "}
                     Regulation (REG)
                   </motion.li>
-                  <motion.li 
-                    className="flex items-start"
-                    variants={fadeIn}
-                  >
+                  <motion.li className="flex items-start" variants={fadeIn}>
                     <img
                       src="/icons/Palne icon (1080 x 1080 px) (2)[1].png"
                       alt=""
@@ -314,7 +278,7 @@ const Courses = () => {
                     Business Analysis & Reporting (BAR) or other discipline
                     choices (under CPA Evolution model)
                   </motion.li>
-                  <motion.li 
+                  <motion.li
                     className="items-start ml-0 md:ml-8 text-gray-700 mt-3 font-bold text-sm md:text-base"
                     variants={fadeIn}
                   >
@@ -334,10 +298,7 @@ const Courses = () => {
                 </h3>
 
                 <ul className="space-y-4 md:space-y-5 text-gray-500 font-semibold text-sm md:text-base">
-                  <motion.li 
-                    className="flex items-start"
-                    variants={fadeIn}
-                  >
+                  <motion.li className="flex items-start" variants={fadeIn}>
                     <img
                       src="/icons/Palne icon (1080 x 1080 px) (2)[1].png"
                       alt=""
@@ -350,7 +311,7 @@ const Courses = () => {
               </motion.div>
 
               {/* Why CPA USA */}
-              <motion.div 
+              <motion.div
                 className="bg-gradient-to-b from-[#0e4fb5] to-[#000c20] rounded-lg py-6 md:py-8 px-4 md:px-6 text-white"
                 variants={scaleUp}
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
@@ -359,10 +320,7 @@ const Courses = () => {
                   Why CPA (USA)?
                 </h3>
                 <div className="space-y-5 md:space-y-3">
-                  <motion.div 
-                    className="flex items-center"
-                    variants={fadeIn}
-                  >
+                  <motion.div className="flex items-center" variants={fadeIn}>
                     <img
                       src="/icons/Blue and White Illustration Build a Business Team Presentation (2) 1.png"
                       alt=""
@@ -372,10 +330,7 @@ const Courses = () => {
                       Globally recognized qualification
                     </span>
                   </motion.div>
-                  <motion.div 
-                    className="flex items-center"
-                    variants={fadeIn}
-                  >
+                  <motion.div className="flex items-center" variants={fadeIn}>
                     <img
                       src="/icons/Blue and White Illustration Build a Business Team Presentation (2) 1.png"
                       alt=""
@@ -385,10 +340,7 @@ const Courses = () => {
                       High salary packages (₹8-20 LPA in India; higher abroad)
                     </span>
                   </motion.div>
-                  <motion.div 
-                    className="flex items-center"
-                    variants={fadeIn}
-                  >
+                  <motion.div className="flex items-center" variants={fadeIn}>
                     <img
                       src="/icons/Blue and White Illustration Build a Business Team Presentation (2) 1.png"
                       alt=""
@@ -399,10 +351,7 @@ const Courses = () => {
                       etc.)
                     </span>
                   </motion.div>
-                  <motion.div 
-                    className="flex items-center"
-                    variants={fadeIn}
-                  >
+                  <motion.div className="flex items-center" variants={fadeIn}>
                     <img
                       src="/icons/Blue and White Illustration Build a Business Team Presentation (2) 1.png"
                       alt=""

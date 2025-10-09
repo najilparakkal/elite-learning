@@ -11,22 +11,31 @@ import Reviews from "./Reviews";
 
 const hiringpartners = [
   {
-    image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+    image: "/Hiring logo/Accenture.svg",
   },
   {
-    image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+    image: "/Hiring logo/american-express-logo-19.svg",
   },
   {
-    image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+    image: "/Hiring logo/Cisco_logo_blue_2016.svg",
   },
   {
-    image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+    image: "/Hiring logo/deloitte-1.svg",
   },
   {
-    image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+    image: "/Hiring logo/EY_logo_2019.svg",
   },
   {
-    image: "/team/Screenshot 2025-08-22 at 3.50.57 PM 2.png",
+    image: "/Hiring logo/grant-thornton-vector-logo.svg",
+  },
+  {
+    image: "/Hiring logo/H_and_R_Block_logo.svg",
+  },
+  {
+    image: "/Hiring logo/Infosys_logo.svg",
+  },
+  {
+    image: "/Hiring logo/KNAV LOGO.png",
   },
 ];
 
@@ -407,35 +416,35 @@ export default function Home() {
         <Team />
       </main>
       <div className="pb-10">
-        <div className="h-fill w-full bg-black flex max-w-7xl px-4 md:px-8 lg:px-12 mx-auto">
-          <div className="flex items-center w-[20%] font-semibold">
+        <div className="h-fill w-full h-20 flex max-w-7xl px-4 md:px-8 lg:px-12 mx-auto">
+          <div className="flex items-center justify-center rounded-r-full bg-black w-[20%] font-semibold">
             <h6 className="md:text-xl text-sm text-white">
               Our hiring partners
             </h6>
           </div>
 
-          <div className="w-[80%] mx-auto">
+          <div className="w-[80%] mx-auto h-full">
             <motion.div
-              className="relative   justify-center items-center  h-full w-full"
+              className="relative justify-center items-center h-full w-full"
               variants={fadeInVariants}
               animate={controls}
             >
               <Slider ref={newSliderRef} {...partnersSliderSettings}>
                 {hiringpartners.map((member, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    className="relative flex items-center justify-center h-full"
+                    className="!flex !items-center !justify-center h-20"
                   >
-                    {/* Image */}
-                    <img
-                      src={member.image}
-                      alt={`hiring partner ${index + 1}`}
-                      className="max-h-20 object-contain mx-auto"
-                    />
-
-                    {/* Black overlay */}
-                    <div className="absolute inset-0 bg-black/50"></div>
-                  </motion.div>
+                    {" "}
+                    {/* Added ! for priority */}
+                    <motion.div className="relative flex items-center justify-center w-full h-full">
+                      <img
+                        src={member.image}
+                        alt={`hiring partner ${index + 1}`}
+                        className="max-h-10 object-contain mx-auto"
+                      />
+                    </motion.div>
+                  </div>
                 ))}
               </Slider>
             </motion.div>

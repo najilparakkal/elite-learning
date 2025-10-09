@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Header from "../../helpers/components/Header";
 import Contact from "../../helpers/components/Contact";
@@ -10,9 +10,9 @@ const containerVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.2,
-      delayChildren: 0.3
-    }
-  }
+      delayChildren: 0.3,
+    },
+  },
 };
 
 const itemVariants = {
@@ -22,9 +22,9 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: "easeOut"
-    }
-  }
+      ease: "easeOut",
+    },
+  },
 };
 
 const imageVariants = {
@@ -34,17 +34,20 @@ const imageVariants = {
     scale: 1,
     transition: {
       duration: 0.7,
-      ease: "easeOut"
-    }
-  }
+      ease: "easeOut",
+    },
+  },
 };
 
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="min-h-screen bg-gray-50 sora">
       <Header />
 
-      <motion.div 
+      <motion.div
         className="px-4 md:px-12 max-w-7xl mx-auto lg:px-16 py-10 md:py-16 lg:py-20"
         initial="hidden"
         whileInView="visible"
@@ -53,7 +56,7 @@ const About = () => {
       >
         {/* First Section */}
         <div className="grid md:grid-cols-2 md:gap-12 gap-8 justify-center pt-20 items-center mb-16">
-          <motion.div 
+          <motion.div
             className="md:hidden flex items-center justify-center h-full rounded-2xl"
             variants={imageVariants}
           >
@@ -63,23 +66,23 @@ const About = () => {
               className="object-fill h-full w-full rounded-2xl"
             />
           </motion.div>
-          
+
           <motion.div className="md:py-10" variants={itemVariants}>
-            <motion.h1 
+            <motion.h1
               className="text-3xl md:text-[40px] font-bold text-gray-900 text-start"
               variants={itemVariants}
             >
               About Us
             </motion.h1>
-            
-            <motion.h2 
+
+            <motion.h2
               className="text-[#3B77D6] font-bold text-2xl md:text-[30px] md:mb-12 mb-8 text-start"
               variants={itemVariants}
             >
               Kerala's First Exclusive CPA Training Academy
             </motion.h2>
-            
-            <motion.p 
+
+            <motion.p
               className="text-gray-600 font-semibold text-sm leading-relaxed mb-3"
               variants={itemVariants}
             >
@@ -91,7 +94,7 @@ const About = () => {
               across.
             </motion.p>
 
-            <motion.p 
+            <motion.p
               className="text-gray-600 font-semibold text-sm leading-relaxed"
               variants={itemVariants}
             >
@@ -101,8 +104,8 @@ const About = () => {
               needs, conclusions, and making all our rights.
             </motion.p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="hidden md:flex items-center justify-center h-full rounded-2xl"
             variants={imageVariants}
           >
@@ -115,14 +118,14 @@ const About = () => {
         </div>
 
         {/* Second Section */}
-        <motion.div 
+        <motion.div
           className="grid md:grid-cols-2 gap-8 md:gap-12 justify-center md:py-8 items-center mb-6 md:mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
         >
-          <motion.div 
+          <motion.div
             className="flex items-center justify-center h-full rounded-2xl"
             variants={imageVariants}
           >
@@ -134,14 +137,14 @@ const About = () => {
           </motion.div>
 
           <motion.div className="md:py-8 lg:py-10" variants={itemVariants}>
-            <motion.h2 
+            <motion.h2
               className="text-[#3B77D6] font-bold text-2xl md:text-[30px] sm:text-2xl md:text-3xl mb-6 md:mb-8 lg:mb-12 text-start"
               variants={itemVariants}
             >
               Our Mission
             </motion.h2>
-            
-            <motion.p 
+
+            <motion.p
               className="text-gray-600 font-medium text-xs sm:text-sm leading-relaxed mb:mb-3"
               variants={itemVariants}
             >
@@ -156,7 +159,7 @@ const About = () => {
           </motion.div>
         </motion.div>
       </motion.div>
-      
+
       <Contact />
     </div>
   );
