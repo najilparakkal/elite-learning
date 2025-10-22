@@ -5,9 +5,12 @@ import { motion } from "framer-motion";
 import { BsRocketTakeoff } from "react-icons/bs";
 import { SiGooglemeet } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
+import { GiGraduateCap } from "react-icons/gi";
+import { AiOutlineAim } from "react-icons/ai";
+import { LiaGlobeEuropeSolid } from "react-icons/lia";
 
 const Courses = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // 🔹 Course Data
   const courseCards = [
     {
@@ -39,25 +42,21 @@ const Courses = () => {
   // 🔹 Feature Boxes Data
   const features = [
     {
-      icon: <FaBookOpenReader className="w-5 h-5 md:w-6 md:h-6" />,
-      title: "Just 4 papers to clear",
-      text: "Accounting | Auditing | Taxation | Business",
+      icon: <GiGraduateCap  className="w-5 h-5 md:w-6 md:h-6" />,
+      title: "Expert Mentorship",
+      text: "Lean directly from seasoned CPA professionals who guide you with proven strategies for exam success ",
     },
     {
-      icon: <FaCalendarCheck className="w-5 h-5 md:w-6 md:h-6" />,
-      title: "Finish 12 - 15 months",
-      text: "One exam every 30 days perfectly placed",
+      icon: <AiOutlineAim  className="w-5 h-5 md:w-6 md:h-6" />,
+      title: "Structured Learning Path",
+      text: "A clear step-by-step road map designed to help you succeed without confusion.",
     },
     {
-      icon: <BsRocketTakeoff className="w-5 h-5 md:w-6 md:h-6" />,
-      title: "In Depth  & Comprehensive",
-      text: " classes focused on conceptual clarity",
+      icon: <LiaGlobeEuropeSolid  className="w-5 h-5 md:w-6 md:h-6" />,
+      title: "Globally Recognized",
+      text: "Prepare one of the world's most respected accounting certifications and boost your career prospects.",
     },
-    {
-      icon: <SiGooglemeet className="w-5 h-5 md:w-6 md:h-6" />,
-      title: "Flexible Learning",
-      text: "Online & Recorded classes",
-    },
+   
   ];
 
   // Animation variants
@@ -171,7 +170,7 @@ const Courses = () => {
                     className="mt-auto w-full text-xs sm:text-sm bg-[#001333] text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg font-medium hover:bg-slate-700 transition-colors duration-200"
                     whileHover={buttonHover}
                     whileTap={buttonTap}
-                    onClick={() => navigate('/courses')}
+                    onClick={() => navigate("/courses")}
                   >
                     {course.button}
                   </motion.button>
@@ -183,7 +182,7 @@ const Courses = () => {
 
         {/* 🔹 Feature Boxes */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-8 pt-8 md:pt-10"
+          className="grid grid-cols-1  md:grid-cols-3 gap-5 sm:gap-6 md:gap-8 pt-8 md:pt-10"
           variants={staggerContainer}
         >
           {features.map((feature, index) => (
@@ -194,7 +193,7 @@ const Courses = () => {
               whileHover={{
                 y: -5,
                 boxShadow: "0 10px 20px rgba(0, 0, 0, 0.1)",
-                border:"none"
+                border: "none",
               }}
             >
               <motion.div
