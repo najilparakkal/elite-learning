@@ -16,17 +16,20 @@ import Footer from "./Footer";
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [email, setEmail] = useState("");
-  
+
   // Refs for animation triggers
   const ref = useRef(null);
   const formRef = useRef(null);
   const newsletterRef = useRef(null);
-  
+
   // Check if elements are in view
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const isFormInView = useInView(formRef, { once: true, amount: 0.3 });
-  const isNewsletterInView = useInView(newsletterRef, { once: true, amount: 0.3 });
-  
+  const isNewsletterInView = useInView(newsletterRef, {
+    once: true,
+    amount: 0.3,
+  });
+
   // Animation controls
   const controls = useAnimation();
   const formControls = useAnimation();
@@ -131,36 +134,46 @@ const Contact = () => {
     if (isNewsletterInView) {
       newsletterControls.start("visible");
     }
-  }, [isInView, isFormInView, isNewsletterInView, controls, formControls, newsletterControls]);
+  }, [
+    isInView,
+    isFormInView,
+    isNewsletterInView,
+    controls,
+    formControls,
+    newsletterControls,
+  ]);
 
   return (
     <div className="h-auto lg:px-16 px-4 pb-8 md:pb-10 pt-12 md:pt-20 w-full rounded-t-2xl bg-gradient-to-b from-[#0e4fb5] to-[#000c20]">
-      <div ref={ref} className="flex w-full flex-col md:flex-row max-w-7xl mx-auto">
-        <motion.div 
+      <div
+        ref={ref}
+        className="flex w-full flex-col md:flex-row max-w-7xl mx-auto"
+      >
+        <motion.div
           className="w-full md:w-1/2 px-2 sm:px-4 md:px-8 lg:px-12 xl:px-20"
           variants={scaleUpVariants}
           initial="hidden"
           animate={controls}
         >
           <img
-            src="/banners/Asset 4[2].png"
+            src="/banners/FINAL_ILLUSTRATION[1].png"
             alt="Contact illustration"
             className="h-auto w-full object-center max-w-md mx-auto md:max-w-full"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           className="w-full md:w-1/2 flex flex-col space-y-3 md:space-y-4 justify-center items-center md:items-start mt-6 md:mt-0 px-2 sm:px-4"
           variants={containerVariants}
           initial="hidden"
           animate={controls}
         >
-          <motion.h6 
+          <motion.h6
             className="text-xl sm:text-2xl md:text-3xl font-semibold text-white text-center md:text-left"
             variants={slideUpVariants}
           >
             Just on Build Your Dream.
           </motion.h6>
-          <motion.p 
+          <motion.p
             className="text-xs sm:text-sm text-gray-300 w-full md:w-[80%] lg:w-[65%] text-center md:text-left"
             variants={fadeInVariants}
           >
@@ -168,7 +181,7 @@ const Contact = () => {
             you with the right guidance, skills, and support to turn your vision
             into reality.
           </motion.p>
-          <motion.button 
+          <motion.button
             className="text-xs sm:text-sm w-fit text-white px-7 py-2 sm:px-4 sm:py-2 rounded-md bg-[#001333]"
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
@@ -187,7 +200,7 @@ const Contact = () => {
         initial="hidden"
         animate={formControls}
       >
-        <motion.div 
+        <motion.div
           className="w-full md:w-1/2 p-2 sm:p-4 md:py-6 lg:py-8 xl:pt-10 xl:pb-5 flex flex-col justify-evenly"
           variants={containerVariants}
           initial="hidden"
@@ -195,7 +208,7 @@ const Contact = () => {
         >
           <div className="flex flex-col justify-between space-y-4 md:space-y-6 p-2 sm:p-4 h-full rounded-lg">
             {/* First Block */}
-            <motion.div 
+            <motion.div
               className="flex flex-col gap-3 md:gap-5 pt-6 md:pt-10 lg:pt-14 rounded"
               variants={slideUpVariants}
             >
@@ -209,7 +222,7 @@ const Contact = () => {
             </motion.div>
 
             {/* Second Block */}
-            <motion.div 
+            <motion.div
               className="flex flex-col p-2 sm:p-4 rounded"
               variants={fadeInVariants}
             >
@@ -224,7 +237,7 @@ const Contact = () => {
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="w-full md:w-1/2 py-6 md:py-8 lg:py-10"
           variants={scaleUpVariants}
           initial="hidden"
@@ -249,7 +262,7 @@ const Contact = () => {
               }) => (
                 <Form onSubmit={handleSubmit}>
                   {/* First Name and Last Name Row */}
-                  <motion.div 
+                  <motion.div
                     className="flex flex-col mb-4 md:mb-5 md:flex-row md:space-x-2"
                     variants={itemVariants}
                     initial="hidden"
@@ -359,7 +372,9 @@ const Contact = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       error={
-                        submitted || touched.email ? Boolean(errors.email) : false
+                        submitted || touched.email
+                          ? Boolean(errors.email)
+                          : false
                       }
                       helperText={shouldShowError("email", touched, errors)}
                       InputProps={{
@@ -400,7 +415,7 @@ const Contact = () => {
                   </motion.div>
 
                   {/* Phone Number Field */}
-                  <motion.div 
+                  <motion.div
                     className="mb-4 md:mb-6"
                     variants={itemVariants}
                     initial="hidden"
@@ -535,7 +550,7 @@ const Contact = () => {
         </motion.div>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         ref={newsletterRef}
         className="w-full flex justify-center items-center py-6 sm:py-8 md:py-10"
         variants={fadeInVariants}
@@ -549,13 +564,13 @@ const Contact = () => {
           initial="hidden"
           animate={newsletterControls}
         >
-          <motion.h2 
+          <motion.h2
             className="text-lg sm:text-xl md:text-2xl font-semibold text-white mb-2"
             variants={slideUpVariants}
           >
             Never Miss an Update
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-gray-400 text-[10px] sm:text-sm mb-4 sm:mb-6 w-full md:w-[80%] lg:w-[70%]"
             variants={fadeInVariants}
           >

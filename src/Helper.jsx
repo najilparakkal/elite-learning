@@ -15,11 +15,11 @@ const HelpWidget = () => {
       {/* WhatsApp */}
       <div className="flex items-center">
         <a
-          href="https://wa.me/1234567890"
+          href="https://wa.me/+919995353511"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-white p-2 rounded-l-lg shadow-md flex items-center gap-2 transition-all duration-500 hover:bg-blue-50 z-10"
-          style={{ width: hoveredItem === "whatsapp" ? "172px" : "40px" }}
+          style={{ width: hoveredItem === "whatsapp" ? "172px" : "32px" }}
           onMouseEnter={() => setHoveredItem("whatsapp")}
           onMouseLeave={() => setHoveredItem(null)}
         >
@@ -35,9 +35,9 @@ const HelpWidget = () => {
       {/* Email */}
       <div className="flex items-center">
         <a
-          href="mailto:info@example.com"
+          href="mailto:ealitlearning@gmail.com"
           className="bg-white p-2 rounded-l-lg shadow-md flex items-center gap-2 transition-all duration-500 hover:bg-blue-50 z-10"
-          style={{ width: hoveredItem === "email" ? "144px" : "40px" }}
+          style={{ width: hoveredItem === "email" ? "144px" : "32px" }}
           onMouseEnter={() => setHoveredItem("email")}
           onMouseLeave={() => setHoveredItem(null)}
         >
@@ -53,9 +53,9 @@ const HelpWidget = () => {
       {/* Phone */}
       <div className="flex items-center">
         <a
-          href="tel:+1234567890"
+          href="tel:+919995353511"
           className="bg-white p-2 rounded-l-lg shadow-md flex items-center gap-2 transition-all duration-500 hover:bg-blue-50 z-10"
-          style={{ width: hoveredItem === "phone" ? "144px" : "40px" }}
+          style={{ width: hoveredItem === "phone" ? "144px" : "32px" }}
           onMouseEnter={() => setHoveredItem("phone")}
           onMouseLeave={() => setHoveredItem(null)}
         >

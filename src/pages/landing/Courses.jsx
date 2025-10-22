@@ -1,10 +1,13 @@
 "use client";
 
-import { BiAward, BiBookOpen, BiTargetLock } from "react-icons/bi";
-import { FaGraduationCap } from "react-icons/fa6";
+import { FaBookOpenReader, FaCalendarCheck } from "react-icons/fa6";
 import { motion } from "framer-motion";
+import { BsRocketTakeoff } from "react-icons/bs";
+import { SiGooglemeet } from "react-icons/si";
+import { useNavigate } from "react-router-dom";
 
 const Courses = () => {
+  const navigate = useNavigate()
   // 🔹 Course Data
   const courseCards = [
     {
@@ -36,24 +39,24 @@ const Courses = () => {
   // 🔹 Feature Boxes Data
   const features = [
     {
-      icon: <FaGraduationCap className="w-5 h-5 md:w-6 md:h-6" />,
-      title: "Expert Mentorship",
-      text: "Learn directly from seasoned CPA professionals who guide you with proven strategies for exam success.",
+      icon: <FaBookOpenReader className="w-5 h-5 md:w-6 md:h-6" />,
+      title: "Just 4 papers to clear",
+      text: "Accounting | Auditing | Taxation | Business",
     },
     {
-      icon: <BiTargetLock className="w-5 h-5 md:w-6 md:h-6" />,
-      title: "Structured Learning Path",
-      text: "A clear, step-by-step roadmap designed to help you succeed without confusion.",
+      icon: <FaCalendarCheck className="w-5 h-5 md:w-6 md:h-6" />,
+      title: "Finish 12 - 15 months",
+      text: "One exam every 30 days perfectly placed",
     },
     {
-      icon: <BiAward className="w-5 h-5 md:w-6 md:h-6" />,
-      title: "Globally Recognized",
-      text: "Prepare for one of the world's most respected accounting certifications and boost your career prospects.",
+      icon: <BsRocketTakeoff className="w-5 h-5 md:w-6 md:h-6" />,
+      title: "In Depth  & Comprehensive",
+      text: " classes focused on conceptual clarity",
     },
     {
-      icon: <BiBookOpen className="w-5 h-5 md:w-6 md:h-6" />,
+      icon: <SiGooglemeet className="w-5 h-5 md:w-6 md:h-6" />,
       title: "Flexible Learning",
-      text: "Access classes and study resources anytime, anywhere—designed to fit your schedule.",
+      text: "Online & Recorded classes",
     },
   ];
 
@@ -119,63 +122,64 @@ const Courses = () => {
         </motion.div>
 
         {/* 🔹 Course Cards */}
-<div className="flex justify-center items-center w-full  py-12">
-  <motion.div
-    className=" w-auto  max-w-6xl  px-4"
-    variants={staggerContainer}
-  >
-    {courseCards.map((course, index) => (
-      <motion.div
-        key={index}
-        className="bg-white p-3 sm:p-4 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
-        variants={fadeInUp}
-        whileHover={cardHover}
-      >
-        {/* Card Header with Gradient */}
-        <motion.div
-          className="relative rounded-xl h-40 sm:h-48 flex items-center justify-center overflow-hidden"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.4 }}
-        >
-          <img
-            src="/banners/Artboard-5[1].webp"
-            alt="Banner"
-            className="w-full h-full object-fill   rounded-xl"
-          />
-        </motion.div>
-
-        {/* Card Content */}
-        <div className="flex flex-col flex-1 pt-4 sm:pt-6">
-          <motion.h3
-            className="text-sm sm:text-base border w-fit px-3 py-1.5 rounded-md border-[#115ACE] font-bold text-[#115ACE] mb-3"
-            whileHover={{ scale: 1.05, backgroundColor: "#E6F0FF" }}
+        <div className="flex justify-center items-center w-full  py-12">
+          <motion.div
+            className=" w-auto  max-w-6xl  px-4"
+            variants={staggerContainer}
           >
-            {course.title}
-          </motion.h3>
+            {courseCards.map((course, index) => (
+              <motion.div
+                key={index}
+                className="bg-white p-3 sm:p-4 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
+                variants={fadeInUp}
+                whileHover={cardHover}
+              >
+                {/* Card Header with Gradient */}
+                <motion.div
+                  className="relative rounded-xl h-40 sm:h-48 flex items-center justify-center overflow-hidden"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <img
+                    src="/banners/Artboard-5[1].webp"
+                    alt="Banner"
+                    className="w-full h-full object-fill   rounded-xl"
+                  />
+                </motion.div>
 
-          {/* description grows */}
-          <motion.p
-            className="text-gray-900 font-semibold mb-4 sm:mb-6 text-xs sm:text-sm leading-relaxed flex-grow"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 + index * 0.1 }}
-          >
-            {course.description}
-          </motion.p>
+                {/* Card Content */}
+                <div className="flex flex-col flex-1 pt-4 sm:pt-6">
+                  <motion.h3
+                    className="text-sm sm:text-base border w-fit px-3 py-1.5 rounded-md border-[#115ACE] font-bold text-[#115ACE] mb-3"
+                    whileHover={{ scale: 1.05, backgroundColor: "#E6F0FF" }}
+                  >
+                    {course.title}
+                  </motion.h3>
 
-          {/* button stays bottom */}
-          <motion.button
-            className="mt-auto w-full text-xs sm:text-sm bg-[#001333] text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg font-medium hover:bg-slate-700 transition-colors duration-200"
-            whileHover={buttonHover}
-            whileTap={buttonTap}
-          >
-            {course.button}
-          </motion.button>
+                  {/* description grows */}
+                  {/* <motion.p
+                    className="text-gray-900 font-semibold mb-4 sm:mb-6 text-xs sm:text-sm leading-relaxed flex-grow"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 + index * 0.1 }}
+                  >
+                    {course.description}
+                  </motion.p> */}
+
+                  {/* button stays bottom */}
+                  <motion.button
+                    className="mt-auto w-full text-xs sm:text-sm bg-[#001333] text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg font-medium hover:bg-slate-700 transition-colors duration-200"
+                    whileHover={buttonHover}
+                    whileTap={buttonTap}
+                    onClick={() => navigate('/courses')}
+                  >
+                    {course.button}
+                  </motion.button>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-      </motion.div>
-    ))}
-  </motion.div>
-</div>
 
         {/* 🔹 Feature Boxes */}
         <motion.div
@@ -185,12 +189,12 @@ const Courses = () => {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="text-start justify-center items-center flex flex-col border pt-6 sm:pt-8 md:pt-10 px-3 sm:px-4 pb-6 sm:pb-7 md:pb-9 rounded-xl border-gray-200"
+              className="text-start justify-center items-center flex flex-col shadow-lg pt-6 sm:pt-8 md:pt-10 px-3 sm:px-4 pb-6 sm:pb-7 md:pb-9 rounded-xl "
               variants={fadeInUp}
               whileHover={{
                 y: -5,
                 boxShadow: "0 10px 20px rgba(0, 0, 0, 0.1)",
-                borderColor: "#115ACE",
+                border:"none"
               }}
             >
               <motion.div

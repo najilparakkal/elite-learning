@@ -237,7 +237,7 @@ export default function Home() {
                   className="text-3xl md:text-[64px] font-bold text-gray-900 leading-tight"
                   variants={fadeIn}
                 >
-                  India's{" "}
+                  Kerala's{" "}
                 </motion.h1>
                 <motion.span
                   className="text-[#3B77D6] font-bold text-3xl md:text-[64px] block"
@@ -251,7 +251,7 @@ export default function Home() {
                 >
                   Join Kerala's pioneering{" "}
                   <span className="text-[#115ACE] font-medium">
-                    CPA training academy
+                    CPA provider
                   </span>
                   . Get expert mentorship, global-standard resources, and the
                   right guidance to achieve your CPA dream.
@@ -276,7 +276,7 @@ export default function Home() {
 
               {/* Features */}
               <motion.div
-                className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-6 md:pt-8"
+                className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-6 md:pt-4"
                 variants={staggerContainer}
               >
                 {[
@@ -302,6 +302,18 @@ export default function Home() {
                   </motion.div>
                 ))}
               </motion.div>
+
+              <div className="inline-flex items-center gap-3  py-4 ">
+                <span className="text-gray-700 font-medium whitespace-nowrap">
+                  Partnered with
+                </span>
+                <div className="h-8 w-px bg-blue-200"></div>
+                <img
+                  src="/Hiring logo/GleimExamPrep_HorizontalLogo_Red_LargerR_RGB.svg"
+                  alt="gleim logo"
+                  className="h-6 w-auto opacity-90 hover:opacity-100 transition-opacity"
+                />
+              </div>
             </motion.div>
 
             {/* Right Content - Hero Image */}
@@ -312,7 +324,7 @@ export default function Home() {
               {/* Image container */}
               <div className="h-64 md:h-[400px] flex md:justify-end justify-center w-full relative">
                 <motion.img
-                  src="/banners/Back Drop Graphics[2].png"
+                  src="/banners/EALIT_FIRST_IMAGE[1].png"
                   alt="Backdrop"
                   className="h-full w-auto object-fill flex justify-end"
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -351,7 +363,7 @@ export default function Home() {
 
         {/* Bottom Section with Slider */}
         <motion.section
-          className="flex flex-col md:flex-row items-center md:items-start mt-12 md:mt-16 md:h-20 gap-6 md:gap-0"
+          className="flex flex-col md:flex-row items-center md:items-start mt-12 md:mt-0 md:h-20 gap-6 md:gap-0"
           variants={fadeIn}
         >
           {/* Left Text */}
@@ -397,7 +409,7 @@ export default function Home() {
                 alt="prev"
                 className="h-5 w-5 md:h-6 md:w-6 cursor-pointer"
                 onClick={() => sliderRef?.slickPrev()}
-                whileHover={{ scale: 1.2, x: -2 }}
+                // whileHover={{ scale: 1.2, x: -2 }}
                 whileTap={{ scale: 0.9 }}
               />
               <motion.img
@@ -405,7 +417,7 @@ export default function Home() {
                 alt="next"
                 className="h-5 w-5 md:h-6 md:w-6 cursor-pointer"
                 onClick={() => sliderRef?.slickNext()}
-                whileHover={{ scale: 1.2, x: 2 }}
+                // whileHover={{ scale: 1.2, x: 2 }}
                 whileTap={{ scale: 0.9 }}
               />
             </motion.div>

@@ -54,72 +54,72 @@ const Header = () => {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" }, 
+    { name: "About Us", href: "/about" },
     { name: "Courses", href: "/courses" },
     { name: "Our Team", href: "#team", isSection: true },
-    { name: "Reviews", href: "#reviews", isSection: true },
+    { name: "Feedback", href: "#reviews", isSection: true },
   ];
-const handleNavigation = (e, link) => {
-  e.preventDefault();
-  setIsMobileMenuOpen(false);
+  const handleNavigation = (e, link) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
 
-  if (link.isSection) {
-    if (location.pathname !== "/") {
-      navigate("/", { 
-        state: { scrollTo: link.href } 
-      });
-    } else {
-      scrollToSection(link.href);
-    }
-  } else {
-    navigate(link.href);
-  }
-};
-
-// Handle scroll after navigation
-useEffect(() => {
-  if (location.state?.scrollTo) {
-    const scrollTo = location.state.scrollTo;
-    
-    const attemptScroll = () => {
-      const id = scrollTo.replace("#", "");
-      const element = document.getElementById(id);
-      
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
+    if (link.isSection) {
+      if (location.pathname !== "/") {
+        navigate("/", {
+          state: { scrollTo: link.href },
         });
-        // Clear the state
-        navigate(location.pathname, { replace: true, state: {} });
-        return true;
+      } else {
+        scrollToSection(link.href);
       }
-      return false;
-    };
-
-    // Try immediately
-    if (!attemptScroll()) {
-      // If not found, try again after a delay
-      const timer = setTimeout(() => {
-        attemptScroll();
-      }, 300);
-      
-      return () => clearTimeout(timer);
+    } else {
+      navigate(link.href);
     }
-  }
-}, [location.state, navigate, location.pathname]);
+  };
 
-const scrollToSection = (sectionId) => {
-  const id = sectionId.replace("#", "");
-  const element = document.getElementById(id);
-  
-  if (element) {
-    element.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
-};
+  // Handle scroll after navigation
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const scrollTo = location.state.scrollTo;
+
+      const attemptScroll = () => {
+        const id = scrollTo.replace("#", "");
+        const element = document.getElementById(id);
+
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+          // Clear the state
+          navigate(location.pathname, { replace: true, state: {} });
+          return true;
+        }
+        return false;
+      };
+
+      // Try immediately
+      if (!attemptScroll()) {
+        // If not found, try again after a delay
+        const timer = setTimeout(() => {
+          attemptScroll();
+        }, 300);
+
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [location.state, navigate, location.pathname]);
+
+  const scrollToSection = (sectionId) => {
+    const id = sectionId.replace("#", "");
+    const element = document.getElementById(id);
+
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
   const handleContactClick = (e) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
